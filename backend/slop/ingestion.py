@@ -124,6 +124,26 @@ class Fetcher:
         meta_file.write_text(json.dumps(meta))
         return html, meta
 
+    def fetch_sitemap(self):
+        """Read the one approved discovery index without widening course-page fetches."""
+        url = ORIGIN + "/sitemap.xml"
+        if self.robots is None:
+            response = self._request(ORIGIN + "/robots.txt")
+            response.raise_for_status()
+            self.robots = RobotFileParser()
+            self.robots.parse(response.text.splitlines())
+        if not self.robots.can_fetch(AGENT, url):
+            raise RuntimeError("robots.txt disallows the degree discovery index")
+        cached = self.cache / "sitemap.xml"
+        if cached.exists() and time.time() - cached.stat().st_mtime < self.ttl:
+            return cached.read_text()
+        response = self._request(url)
+        response.raise_for_status()
+        if len(response.content) > 10_000_000:
+            raise ValueError("Discovery index exceeds 10 MB")
+        cached.write_text(response.text)
+        return response.text
+
     def prune(self, days=14):
         for file in self.cache.glob("*"):
             if file.is_file() and file.stat().st_mtime < time.time() - days * 86400:
@@ -132,6 +152,17 @@ class Fetcher:
 
 def parse_degree(html, source):
     soup = BeautifulSoup(html, "html.parser")
+    source_path = urlparse(source.get("canonical_url") or source["requested_url"]).path
+    slug_match = re.search(r"/study/degrees/(?:20\d{2}/)?([^/]+)/?", source_path)
+    slug = slug_match[1] if slug_match else "unknown-degree"
+    degree_id = "bcomp" if slug == "bachelor-of-computer-science" else slug
+    program_heading = next((clean(h) for h in soup.find_all("h3")
+                            if clean(h).startswith("Program code:")), "")
+    program_match = re.search(r"Program code:\s*([A-Z][A-Z0-9]+)", program_heading)
+    program_code = program_match[1] if program_match else "BCOMP" if degree_id == "bcomp" else None
+    duration = next((clean(el) for el in soup.select(
+        ".degree-details-content-section-icon-list-top span")
+        if re.fullmatch(r"\d+(?:\.\d+)? year\(s\) full-time", clean(el))), None)
     requested_year = source["year"]
     page_years = {
         int(year)
@@ -216,13 +247,14 @@ def parse_degree(html, source):
                     }
                 )
     return {
-        "id": "bcomp",
+        "id": degree_id,
         "title": clean(soup.find("h1")),
         "year": source["year"],
         "requested_year": requested_year,
         "page_year": page_year,
         "year_status": year_status,
-        "program_code": "BCOMP",
+        "program_code": program_code,
+        "duration": duration,
         "total_units": int(total_match[1]) if total_match else None,
         "overview": clean(overview),
         "summary_raw": summary,

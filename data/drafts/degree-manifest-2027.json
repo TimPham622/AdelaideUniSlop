@@ -1,0 +1,3607 @@
+{
+  "schema_version": 1,
+  "catalogue_year": 2027,
+  "source_url": "https://adelaide.edu.au/sitemap.xml",
+  "source_sha256": "96cbe0693794c72443654596f7b17c1bc2c2d140cac8c0438e8fc01dccef1a8e",
+  "degrees": [
+    {
+      "id": "aboriginal-and-torres-strait-islander-pathway",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/aboriginal-and-torres-strait-islander-pathway/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-agricultural-sciences",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-agricultural-sciences/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-architectural-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-architectural-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-architectural-design-urban-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-architectural-design-urban-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-aboriginal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-aboriginal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-anthropology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-anthropology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-archaeology-and-classical-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-archaeology-and-classical-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-art-history-and-visual-culture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-art-history-and-visual-culture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-chinese-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-chinese-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-creative-writing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-creative-writing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-cultural-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-cultural-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-english-literature",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-english-literature/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-environmental-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-environmental-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-french-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-french-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-gender-and-sexuality-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-gender-and-sexuality-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-geography",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-geography/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-german-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-german-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-history",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-history/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-international-development",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-international-development/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-international-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-international-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-italian-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-italian-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-japanese-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-japanese-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-kaurna-languages",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-kaurna-languages/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-linguistics-and-applied-linguistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-linguistics-and-applied-linguistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-philosophy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-philosophy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-politics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-politics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-population-and-migration-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-population-and-migration-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-screen-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-screen-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-social-research-and-policy-analysis",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-social-research-and-policy-analysis/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-sociology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-sociology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-arts-spanish-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-arts-spanish-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-aviation-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-aviation-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-aviation-pilot",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-aviation-pilot/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-biochemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-biochemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-clinical-trials",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-clinical-trials/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-genetics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-genetics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-medical-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-medical-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-microbiology-and-immunology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-microbiology-and-immunology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-neuroscience",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-neuroscience/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-public-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-public-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-biomedical-and-health-sciences-reproductive-and-childhood-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-biomedical-and-health-sciences-reproductive-and-childhood-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-digital-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-digital-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-human-resource-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-human-resource-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-innovation-entrepreneurship-and-strategy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-innovation-entrepreneurship-and-strategy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-international-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-international-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-marketing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-marketing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-marketing-and-communication",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-marketing-and-communication/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-marketing-and-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-marketing-and-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-procurement-and-supply-chain-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-procurement-and-supply-chain-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-project-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-project-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-project-management-degree-apprenticeship",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-project-management-degree-apprenticeship/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-real-estate",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-real-estate/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-sport-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-sport-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-business-tourism-events-and-hospitality-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-business-tourism-events-and-hospitality-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-clinical-exercise-physiology-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-clinical-exercise-physiology-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-accounting",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-accounting/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-accounting-and-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-accounting-and-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-accounting-and-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-accounting-and-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-accounting-and-financial-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-accounting-and-financial-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-accounting-and-property",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-accounting-and-property/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-banking-and-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-banking-and-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-business-analytics-and-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-business-analytics-and-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-business-analytics-and-financial-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-business-analytics-and-financial-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-business-analytics-and-property",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-business-analytics-and-property/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-finance-and-property",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-finance-and-property/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-financial-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-financial-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-financial-planning-and-property",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-financial-planning-and-property/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-commerce-property",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-commerce-property/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-artificial-intelligence-and-machine-learning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-artificial-intelligence-and-machine-learning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-honours-artificial-intelligence-and-machine-learning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-honours-artificial-intelligence-and-machine-learning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-honours-human-centred-computing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-honours-human-centred-computing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-honours-programming-languages",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-honours-programming-languages/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-human-centred-computing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-human-centred-computing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-computer-science-programming-languages",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-computer-science-programming-languages/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-construction-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-construction-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-construction-management-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-construction-management-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-comicbook-creation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-comicbook-creation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-creative-industries",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-creative-industries/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-creative-writing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-creative-writing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-digital-media-and-web-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-digital-media-and-web-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-festivals",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-festivals/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-games-design-and-production",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-games-design-and-production/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-immersive-media",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-immersive-media/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-performing-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-performing-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-creative-arts-screen-production",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-creative-arts-screen-production/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-aboriginal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-aboriginal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-anthropology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-anthropology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-gender-and-sexuality-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-gender-and-sexuality-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-history",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-history/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-international-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-international-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-politics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-politics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-population-and-migration-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-population-and-migration-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-social-research-and-policy-analysis",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-social-research-and-policy-analysis/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-criminology-and-criminal-justice-sociology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-criminology-and-criminal-justice-sociology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-cyber-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-cyber-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-cyber-security-governance-risk-and-compliance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-cyber-security-governance-risk-and-compliance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-cyber-security-technology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-cyber-security-technology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-dental-surgery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-dental-surgery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-economics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-economics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-economics-advanced-analysis",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-economics-advanced-analysis/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-economics-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-economics-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-chemical-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-chemical-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-civil-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-civil-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-electrical-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-electrical-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-environmental-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-environmental-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-honours-flexible-entry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-honours-flexible-entry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-engineering-mechanical-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-engineering-mechanical-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-exercise-and-sport-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-exercise-and-sport-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-film-and-television",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-film-and-television/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-fine-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-fine-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-graphic-communication-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-graphic-communication-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-human-movement-human-nutrition",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-human-movement-human-nutrition/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-human-movement-secondary-health-and-physical-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-human-movement-secondary-health-and-physical-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-human-movement-sport-coaching",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-human-movement-sport-coaching/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-human-nutrition",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-human-nutrition/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-illustration-and-animation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-illustration-and-animation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-industrial-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-industrial-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-information-technology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-information-technology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-information-technology-data-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-information-technology-data-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-information-technology-games-development",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-information-technology-games-development/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-information-technology-networking-and-cyber-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-information-technology-networking-and-cyber-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-information-technology-software-development",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-information-technology-software-development/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-interior-architecture-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-interior-architecture-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-chinese-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-chinese-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-environmental-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-environmental-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-french-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-french-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-german-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-german-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-history",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-history/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-international-development",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-international-development/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-international-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-international-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-italian-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-italian-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-japanese-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-japanese-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-politics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-politics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-population-and-migration-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-population-and-migration-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-international-relations-spanish-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-international-relations-spanish-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism-creative-writing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism-creative-writing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism-digital-and-social-media-storytelling",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism-digital-and-social-media-storytelling/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism-immersive-media",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism-immersive-media/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism-politics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism-politics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-journalism-strategic-communication",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-journalism-strategic-communication/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laboratory-medicine-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laboratory-medicine-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-commerce",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-commerce/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-criminology-and-criminal-justice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-criminology-and-criminal-justice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-economics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-economics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-economics-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-economics-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-international-relations",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-international-relations/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-journalism",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-journalism/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-psychology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-psychology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-laws-honours-bachelor-of-sustainability-and-climate-change",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-laws-honours-bachelor-of-sustainability-and-climate-change/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-applied-mathematics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-applied-mathematics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-data-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-data-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-honours-applied-mathematics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-honours-applied-mathematics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-honours-data-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-honours-data-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-honours-pure-mathematics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-honours-pure-mathematics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-honours-statistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-honours-statistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-pure-mathematics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-pure-mathematics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-mathematics-statistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-mathematics-statistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-digital-and-social-media-storytelling",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-digital-and-social-media-storytelling/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-digital-media-and-web-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-digital-media-and-web-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-games-design-and-production",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-games-design-and-production/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-immersive-media",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-immersive-media/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-media-cultures",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-media-cultures/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-screen-production",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-screen-production/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-screen-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-screen-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-media-and-communication-strategic-communication",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-media-and-communication-strategic-communication/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-medical-radiation-science-honours-medical-imaging",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-medical-radiation-science-honours-medical-imaging/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-medical-radiation-science-honours-nuclear-medicine",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-medical-radiation-science-honours-nuclear-medicine/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-medical-radiation-science-honours-radiation-therapy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-medical-radiation-science-honours-radiation-therapy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-medical-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-medical-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-midwifery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-midwifery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-classical-performance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-classical-performance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-creative-practice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-creative-practice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-honours-classical-performance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-honours-classical-performance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-honours-creative-practice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-honours-creative-practice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-honours-jazz-performance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-honours-jazz-performance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-honours-music-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-honours-music-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-jazz-performance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-jazz-performance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-music-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-music-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-music-theatre",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-music-theatre/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-occupational-therapy-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-occupational-therapy-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-oral-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-oral-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-outdoor-and-environmental-leadership",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-outdoor-and-environmental-leadership/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-pharmaceutical-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-pharmaceutical-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-pharmacy-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-pharmacy-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-philosophy-politics-and-economics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-philosophy-politics-and-economics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-physiotherapy-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-physiotherapy-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-podiatry-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-podiatry-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-bachelor-of-criminology-and-criminal-justice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-bachelor-of-criminology-and-criminal-justice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-cognitive-neuroscience",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-cognitive-neuroscience/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-counselling-and-interpersonal-skills",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-counselling-and-interpersonal-skills/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-honours-1-year",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-honours-1-year/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-honours-cognitive-neuroscience",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-honours-cognitive-neuroscience/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-psychology-honours-counselling-and-interpersonal-skills",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-psychology-honours-counselling-and-interpersonal-skills/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-public-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-public-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-analytical-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-analytical-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-animal-behaviour",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-animal-behaviour/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-animal-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-animal-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-biochemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-biochemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-biotechnology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-biotechnology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-computational-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-computational-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-ecology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-ecology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-environmental-and-geospatial-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-environmental-and-geospatial-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-environmental-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-environmental-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-evolutionary-biology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-evolutionary-biology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-evolutionary-biology-and-palaeontology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-evolutionary-biology-and-palaeontology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-experimental-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-experimental-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-food-science-and-technology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-food-science-and-technology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-genetics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-genetics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-geology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-geology-and-earth-resources",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology-and-earth-resources/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-geology-and-palaeontology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology-and-palaeontology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-geophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-analytical-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-analytical-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-animal-behaviour",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-animal-behaviour/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-animal-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-animal-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-biochemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-biochemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-biotechnology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-biotechnology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-computational-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-computational-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-ecology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-ecology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-environmental-and-geospatial-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-environmental-and-geospatial-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-environmental-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-environmental-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-evolutionary-biology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-evolutionary-biology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-evolutionary-biology-and-palaeontology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-evolutionary-biology-and-palaeontology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-experimental-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-experimental-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-food-science-and-technology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-food-science-and-technology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-genetics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-genetics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-geology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-geology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-geology-and-earth-resources",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-geology-and-earth-resources/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-geology-and-palaeontology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-geology-and-palaeontology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-geophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-geophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-marine-and-wildlife-conservation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-marine-and-wildlife-conservation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-medicinal-and-biological-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-medicinal-and-biological-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-microbiology-and-immunology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-microbiology-and-immunology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-nuclear-and-radiation-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-nuclear-and-radiation-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-nuclear-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-nuclear-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-physics-and-geophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-physics-and-geophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-plant-biology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-plant-biology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-pure-and-applied-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-pure-and-applied-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-soil-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-soil-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-space-science-and-astrophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-space-science-and-astrophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-honours-theoretical-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-honours-theoretical-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-marine-and-wildlife-conservation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-marine-and-wildlife-conservation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-medicinal-and-biological-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-medicinal-and-biological-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-microbiology-and-immunology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-microbiology-and-immunology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-nuclear-and-radiation-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-nuclear-and-radiation-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-nuclear-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-nuclear-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-physics-and-geophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-physics-and-geophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-plant-biology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-plant-biology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-pure-and-applied-chemistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-pure-and-applied-chemistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-soil-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-soil-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-space-science-and-astrophysics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-space-science-and-astrophysics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-theoretical-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-theoretical-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-science-veterinary-bioscience",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-veterinary-bioscience/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-social-science-ageing-and-disability",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-social-science-ageing-and-disability/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-social-science-human-services",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-social-science-human-services/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-social-work",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-social-work/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-social-work-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-social-work-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-software-engineering-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-software-engineering-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-software-engineering-honours-apprenticeship",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-software-engineering-honours-apprenticeship/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-speech-pathology-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-speech-pathology-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-aboriginal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-aboriginal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-anthropology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-anthropology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-environmental-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-environmental-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-geography",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-geography/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-international-development",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-international-development/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-international-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-international-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-politics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-politics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-population-and-migration-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-population-and-migration-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-sustainability-and-climate-change-sociology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-sustainability-and-climate-change-sociology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-teaching-early-childhood-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-teaching-early-childhood-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-teaching-primary-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-teaching-primary-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-teaching-secondary-honours",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-teaching-secondary-honours/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-veterinary-technology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-veterinary-technology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-visual-effects",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-visual-effects/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "bachelor-of-viticulture-and-oenology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/bachelor-of-viticulture-and-oenology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "centre-for-aboriginal-studies-in-music-casm-foundation-year",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/centre-for-aboriginal-studies-in-music-casm-foundation-year/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "diploma-in-building-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/diploma-in-building-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "diploma-in-legal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/diploma-in-legal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "diploma-in-mathematical-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/diploma-in-mathematical-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "doctor-of-clinical-dentistry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/doctor-of-clinical-dentistry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "doctor-of-medicine",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/doctor-of-medicine/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "doctor-of-philosophy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/doctor-of-philosophy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "doctor-of-veterinary-medicine",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/doctor-of-veterinary-medicine/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "foundation-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/foundation-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "global-executive-master-of-business-administration-defence-and-space",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/global-executive-master-of-business-administration-defence-and-space/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-3d-animation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-3d-animation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-aboriginal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-aboriginal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-alcohol-and-drug-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-alcohol-and-drug-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-biostatistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-biostatistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-breast-imaging",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-breast-imaging/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-building-surveying",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-building-surveying/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-business-administration",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-business-administration/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-commerce",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-commerce/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-compositing-and-tracking",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-compositing-and-tracking/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-counselling-and-psychotherapy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-counselling-and-psychotherapy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-creature-effects",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-creature-effects/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-curatorial-and-museum-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-curatorial-and-museum-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-dynamic-effects-and-lighting",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-dynamic-effects-and-lighting/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-education-digital-learning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-education-digital-learning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-education-islamic-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-education-islamic-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-engineering-maritime-engineering",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-engineering-maritime-engineering/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-engineering-systems-engineering",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-engineering-systems-engineering/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-environmental-policy-and-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-environmental-policy-and-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-film-and-television",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-film-and-television/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-global-executive-business-administration-in-defence-and-space",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-global-executive-business-administration-in-defence-and-space/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-immersive-media-technologies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-immersive-media-technologies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-information-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-information-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-international-addiction-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-international-addiction-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-mathematical-sciences",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-mathematical-sciences/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-midwifery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-midwifery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-acute-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-acute-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-critical-care",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-critical-care/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-infection-prevention-and-control",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-infection-prevention-and-control/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-mental-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-mental-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-nursing-perioperative-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-nursing-perioperative-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-oral-health-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-oral-health-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-pharmacist-prescribing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-pharmacist-prescribing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-pharmacy-practice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-pharmacy-practice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-project-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-project-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-public-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-public-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-research-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-research-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-research-skills",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-research-skills/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-science-radiation-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-science-radiation-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-statistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-statistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-urban-and-regional-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-urban-and-regional-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-certificate-in-wine-and-food-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-certificate-in-wine-and-food-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-addiction-and-mental-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-addiction-and-mental-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-aviation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-aviation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-biostatistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-biostatistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-building-surveying",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-building-surveying/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-counselling-and-psychotherapy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-counselling-and-psychotherapy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-curatorial-and-museum-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-curatorial-and-museum-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-design-fine-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-design-fine-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-design-graphic-communication-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-design-graphic-communication-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-design-illustration-and-animation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-design-illustration-and-animation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-design-industrial-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-design-industrial-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-design-interior-architecture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-design-interior-architecture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-engineering-maritime-engineering",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-engineering-maritime-engineering/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-engineering-systems-engineering",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-engineering-systems-engineering/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-forensic-odontology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-forensic-odontology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-human-resource-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-human-resource-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-immersive-media-technologies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-immersive-media-technologies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-information-management-archives-and-records-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-information-management-archives-and-records-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-information-management-library-and-information-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-information-management-library-and-information-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-international-addiction-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-international-addiction-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-international-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-international-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-marketing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-marketing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-maternal-child-and-family-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-maternal-child-and-family-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-medical-sonography-cardiac",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-medical-sonography-cardiac/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-medical-sonography-general",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-medical-sonography-general/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-medical-sonography-vascular",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-medical-sonography-vascular/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-midwifery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-midwifery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-nursing-critical-care",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-nursing-critical-care/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-nursing-mental-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-nursing-mental-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-procurement-and-supply-chain-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-procurement-and-supply-chain-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-project-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-project-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-public-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-public-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-statistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-statistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-technology-innovation-and-entrepreneurship",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-technology-innovation-and-entrepreneurship/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-tourism-events-and-hospitality-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-tourism-events-and-hospitality-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-viticulture-and-oenology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-viticulture-and-oenology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "graduate-diploma-in-wine-and-food-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/graduate-diploma-in-wine-and-food-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-human-resource-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-human-resource-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-marketing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-marketing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-procurement-and-supply-chain-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-procurement-and-supply-chain-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "international-master-of-business-administration-project-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/international-master-of-business-administration-project-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "legacy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/legacy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-aboriginal-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-aboriginal-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-accounting",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-accounting/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-accounting-and-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-accounting-and-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-accounting-and-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-accounting-and-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-advanced-clinical-physiotherapy-musculoskeletal",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-advanced-clinical-physiotherapy-musculoskeletal/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-advanced-clinical-physiotherapy-sports",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-advanced-clinical-physiotherapy-sports/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-applied-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-applied-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-architecture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-architecture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-architecture-master-of-landscape-architecture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-architecture-master-of-landscape-architecture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-artificial-intelligence-and-machine-learning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-artificial-intelligence-and-machine-learning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-biostatistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-biostatistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-administration",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-administration/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-administration-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-administration-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-administration-human-resource-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-administration-human-resource-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-administration-marketing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-administration-marketing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-administration-sustainable-futures",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-administration-sustainable-futures/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-computer-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-computer-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-construction-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-construction-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-counselling-and-psychotherapy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-counselling-and-psychotherapy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-counselling-and-psychotherapy-clinical-practice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-counselling-and-psychotherapy-clinical-practice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-counselling-and-psychotherapy-clinical-trauma-practice",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-counselling-and-psychotherapy-clinical-trauma-practice/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-counselling-and-psychotherapy-research",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-counselling-and-psychotherapy-research/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-curatorial-and-museum-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-curatorial-and-museum-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-data-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-data-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design-fine-arts",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design-fine-arts/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design-graphic-communication-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design-graphic-communication-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design-illustration-and-animation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design-illustration-and-animation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design-industrial-design",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design-industrial-design/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-design-interior-architecture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-design-interior-architecture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-economics-and-resource-policy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-economics-and-resource-policy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-economics-and-resource-policy-economic-analysis",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-economics-and-resource-policy-economic-analysis/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-economics-and-resource-policy-global-food-and-agribusiness",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-economics-and-resource-policy-global-food-and-agribusiness/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-economics-and-resource-policy-international-trade",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-economics-and-resource-policy-international-trade/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-economics-and-resource-policy-public-economics-and-policy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-economics-and-resource-policy-public-economics-and-policy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-engineering-biopharmaceutical",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-engineering-biopharmaceutical/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-engineering-engineering-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-engineering-engineering-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-engineering-maritime",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-engineering-maritime/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-engineering-materials",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-engineering-materials/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-engineering-systems",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-engineering-systems/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-environmental-policy-and-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-environmental-policy-and-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-finance",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-finance/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-finance-and-business-analytics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-finance-and-business-analytics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-financial-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-financial-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-human-resource-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-human-resource-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-immersive-media-technologies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-immersive-media-technologies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-management-archives-and-records-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-management-archives-and-records-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-management-library-and-information-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-management-library-and-information-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-technology-applied-artificial-intelligence",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-technology-applied-artificial-intelligence/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-technology-computing-and-innovation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-technology-computing-and-innovation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-technology-cyber-security",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-technology-cyber-security/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-information-technology-enterprise-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-information-technology-enterprise-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-international-and-security-law",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-international-and-security-law/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-international-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-international-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-landscape-architecture",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-landscape-architecture/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-laws",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-laws/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-marketing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-marketing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-mathematical-sciences-artificial-intelligence",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-mathematical-sciences-artificial-intelligence/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-medical-sonography-general",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-medical-sonography-general/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-medical-sonography-vascular",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-medical-sonography-vascular/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-midwifery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-midwifery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-midwifery-graduate-entry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-midwifery-graduate-entry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-minimally-invasive-surgery",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-minimally-invasive-surgery/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-music-performance-and-pedagogy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-music-performance-and-pedagogy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-music-performance-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-music-performance-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-nursing",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-nursing/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-nursing-graduate-entry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-nursing-graduate-entry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-nursing-nurse-practitioner",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-nursing-nurse-practitioner/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-occupational-therapy-graduate-entry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-occupational-therapy-graduate-entry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-pharmacy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-pharmacy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-philosophy",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-philosophy/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-physiotherapy-graduate-entry",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-physiotherapy-graduate-entry/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-procurement-and-supply-chain-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-procurement-and-supply-chain-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-accounting",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-accounting/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-chemical",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-chemical/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-civil",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-civil/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-electrical",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-electrical/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-energy-resources",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-energy-resources/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-environmental-and-water-resources-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-environmental-and-water-resources-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-mechanical",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-mechanical/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-mechatronic",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-mechatronic/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-mining",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-mining/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-structural",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-structural/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-professional-engineering-telecommunications",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-professional-engineering-telecommunications/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-project-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-project-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-psychology-clinical",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-psychology-clinical/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-psychology-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-psychology-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-psychology-organisational-and-human-factors",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-psychology-organisational-and-human-factors/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-public-health",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-public-health/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-research",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-research/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-biotechnology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-biotechnology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-environment-and-conservation",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-environment-and-conservation/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-global-food-and-nutrition-science",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-global-food-and-nutrition-science/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-in-addiction-studies",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-in-addiction-studies/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-medical-radiation-physics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-medical-radiation-physics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-science-mineral-geoscience",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-science-mineral-geoscience/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-social-work",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-social-work/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-statistics",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-statistics/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-strategic-communication",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-strategic-communication/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-teaching-early-childhood-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-teaching-early-childhood-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-teaching-primary",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-teaching-primary/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-teaching-secondary",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-teaching-secondary/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-technology-innovation-and-entrepreneurship",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-technology-innovation-and-entrepreneurship/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-tourism-events-and-hospitality-management",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-tourism-events-and-hospitality-management/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-urban-and-regional-planning",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-urban-and-regional-planning/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-viticulture-and-oenology",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-viticulture-and-oenology/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "master-of-wine-and-food-business",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/master-of-wine-and-food-business/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "professional-certificate-in-clinical-education",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/professional-certificate-in-clinical-education/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "professional-certificate-in-defence-contracting-law",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/professional-certificate-in-defence-contracting-law/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    },
+    {
+      "id": "professional-certificate-in-pain-sciences",
+      "canonical_url": "https://adelaide.edu.au/study/degrees/professional-certificate-in-pain-sciences/",
+      "program_code": null,
+      "title": null,
+      "source_status": "DISCOVERED_UNVERIFIED"
+    }
+  ],
+  "discovered_at": "2026-09-27T07:05:33.327250+00:00"
+}

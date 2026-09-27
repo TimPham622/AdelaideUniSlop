@@ -29,11 +29,13 @@ const CreditSchema = z
   .strict();
 export const PlanSchema = z
   .object({
-    schema_version: z.literal(1),
+    schema_version: z.literal(2),
+    id: z.string().min(1).max(100),
     name: z.string().min(1).max(100),
-    year: z.number().int().min(2020).max(2100),
-    degree: z.literal("bcomp"),
-    option: z.string().max(150),
+    catalogue_year: z.number().int().min(2020).max(2100),
+    degree_id: z.string().min(1).max(80),
+    option_ids: z.array(z.string().min(1).max(150)).max(1),
+    audience: z.enum(["domestic", "international"]),
     attempts: z.array(AttemptSchema).max(200),
     credits: z.array(CreditSchema).max(100),
     max_units: z.number().int().min(6).max(48),
@@ -54,6 +56,36 @@ export const PlanSchema = z
         });
   });
 export type Plan = z.infer<typeof PlanSchema>;
+export const LegacyPlanSchema = z.object({
+  schema_version: z.literal(1),
+  name: z.string().min(1).max(100),
+  year: z.number().int().min(2020).max(2100),
+  degree: z.string().min(1).max(80),
+  option: z.string().max(150),
+  attempts: z.array(AttemptSchema).max(200),
+  credits: z.array(CreditSchema).max(100),
+  max_units: z.number().int().min(6).max(48),
+  preference: z.enum(["earliest", "avoid_exams_early", "prefer_no_exam", "balanced"]),
+}).strict();
+export function migratePlan(value: unknown): Plan {
+  if (typeof value !== "object" || value === null || !("schema_version" in value))
+    throw new Error("Invalid plan file");
+  if (value.schema_version === 2) return PlanSchema.parse(value);
+  const old = LegacyPlanSchema.parse(value);
+  return PlanSchema.parse({
+    schema_version: 2,
+    id: crypto.randomUUID(),
+    name: old.name,
+    catalogue_year: old.year,
+    degree_id: old.degree,
+    option_ids: old.option === "general" ? [] : [old.option],
+    audience: "domestic",
+    attempts: old.attempts,
+    credits: old.credits,
+    max_units: old.max_units,
+    preference: old.preference,
+  });
+}
 export type Attempt = z.infer<typeof AttemptSchema>;
 export type Source = {
   requested_url: string;
@@ -114,6 +146,8 @@ export type Degree = {
   id: string;
   title: string;
   year: number;
+  program_code?: string;
+  duration?: string | null;
   overview: string;
   total_units: number;
   summary_raw: string;
@@ -195,11 +229,13 @@ export type Takeability = {
   reasons: { kind: string; status: string; message: string }[];
 };
 export const newPlan = (year: number): Plan => ({
-  schema_version: 1,
+  schema_version: 2,
+  id: crypto.randomUUID(),
   name: "My computer science plan",
-  year,
-  degree: "bcomp",
-  option: "general",
+  catalogue_year: year,
+  degree_id: "bcomp",
+  option_ids: [],
+  audience: "domestic",
   attempts: [],
   credits: [],
   max_units: 24,

@@ -83,3 +83,21 @@ def test_rate_limit_and_privacy_headers(client):
     r = client.get("/health")
     assert r.headers["cache-control"] == "no-store"
     assert "request_id" not in r.json()
+
+
+def test_versioned_degree_and_course_catalogue(client, small_catalogue):
+    alternate = {**small_catalogue["degrees"][0], "id": "other-degree",
+                 "title": "Another degree", "program_code": "OTHER"}
+    small_catalogue["degrees"].append(alternate)
+    listed = client.get("/api/v1/degrees", params={"year": 2026}).json()
+    assert {item["id"] for item in listed["results"]} == {"bcomp", "other-degree"}
+    assert client.get("/api/v1/degrees/other-degree", params={"year": 2026}).json()["id"] == "other-degree"
+    assert client.get("/api/v1/degrees/missing").status_code == 404
+    assert client.get("/api/v1/courses/COMP1001").json()["year"] == 2027
+    assert len(client.get("/api/v1/courses/COMP1001/versions").json()["results"]) == 2
+    assert client.get("/api/v1/courses", params={"year": 2026, "q": "COMP1001"}).json()["count"] == 1
+    plan = {"schema_version": 2, "id": "new", "name": "Alternate", "catalogue_year": 2026,
+            "degree_id": "other-degree", "option_ids": [], "audience": "domestic"}
+    response = client.post("/api/v1/plan/validate", json=plan)
+    assert response.status_code == 200
+    assert response.json()["status"] == "INVALID"

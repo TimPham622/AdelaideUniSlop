@@ -62,7 +62,7 @@ export function CourseSearchView({ query, onQueryChange, onSearch, searching, re
     <div className="results-toolbar">
       <span>
         {results
-          ? `${results.length} matches · ${mode === "HYBRID" ? "semantic + keyword search" : "keyword search"}`
+          ? `${results.length + 1} matches · ${mode === "HYBRID" ? "semantic + keyword search" : "keyword search"}`
           : `${courses.length} currently ingested courses`}
         {coverage ? ` · ${coverage.indexed_courses}/${coverage.catalogue_courses} vector indexed` : ""}
       </span>

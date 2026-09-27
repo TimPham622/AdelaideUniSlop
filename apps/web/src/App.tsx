@@ -35,7 +35,7 @@ import { SourceLink } from "./components/SourceLink";
 import { SourceStatusBadge } from "./SourceStatusBadge";
 import { termLabel } from "./domain/period";
 import { CourseSearchView } from "./views/CourseSearchView";
-import { db, loadPlan, savePlan, exportPlan, parseImport } from "./storage";
+import { db, loadPlan, loadPlanById, listPlans, savePlan, deletePlan, exportPlan, parseImport } from "./storage";
 import {
   newPlan,
   type Plan,
@@ -53,6 +53,8 @@ type Tab =
 export default function App() {
   const [catalogue, setCatalogue] = useState<Catalogue | null>(null);
   const [plan, setPlan] = useState<Plan>(newPlan(2026));
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const selectedOption = plan.option_ids[0] ?? "general";
   const [loaded, setLoaded] = useState(false);
   const [tab, setTab] = useState<Tab>("planner");
   const [error, setError] = useState("");
@@ -112,9 +114,13 @@ export default function App() {
         }
       }
       try {
-        const stored = await loadPlan(2026);
+        const existing = await listPlans();
+        const activeId = localStorage.getItem("adelaide-active-plan");
+        const stored = existing.find((item) => item.id === activeId) ??
+          existing.find((item) => item.catalogue_year === 2026) ?? await loadPlan(2026);
         if (active) {
           setPlan(stored);
+          setPlans(existing);
           setLoaded(true);
         }
       } catch {
@@ -134,8 +140,13 @@ export default function App() {
     let active = true;
     setSaved(false);
     void savePlan(plan)
-      .then(() => {
-        if (active) setSaved(true);
+      .then(async () => {
+        const current = await listPlans();
+        if (active) {
+          setPlans(current);
+          localStorage.setItem("adelaide-active-plan", plan.id);
+          setSaved(true);
+        }
       })
       .catch(() => {
         if (active)
@@ -170,16 +181,16 @@ export default function App() {
     setFitMap({});
     setResults(null);
     void api<Record<string, SearchResult["requirement_fit"]>>(
-      `/requirement-fit?year=${plan.year}&degree=${encodeURIComponent(plan.degree)}&option=${encodeURIComponent(plan.option)}`,
+      `/requirement-fit?year=${plan.catalogue_year}&degree=${encodeURIComponent(plan.degree_id)}&option=${encodeURIComponent(selectedOption)}`,
     ).then((fits) => { if (active) setFitMap(fits); }).catch(() => {
       if (active) setFitMap({});
     });
     return () => { active = false; };
-  }, [catalogue, plan.year, plan.degree, plan.option]);
-  const degree = catalogue?.degrees.find((d) => d.year === plan.year && d.id === plan.degree);
+  }, [catalogue, plan.catalogue_year, plan.degree_id, selectedOption]);
+  const degree = catalogue?.degrees.find((d) => d.year === plan.catalogue_year && d.id === plan.degree_id);
   const courses = useMemo(
-    () => catalogue?.courses.filter((c) => c.year === plan.year) ?? [],
-    [catalogue, plan.year],
+    () => catalogue?.courses.filter((c) => c.year === plan.catalogue_year) ?? [],
+    [catalogue, plan.catalogue_year],
   );
   const courseMap = useMemo(
     () => new Map(courses.map((c) => [c.code, c])),
@@ -195,25 +206,31 @@ export default function App() {
           ...Array.from(
             { length: 6 },
             (_, i) =>
-              `${plan.year + Math.floor(i / 2)}-semester-${(i % 2) + 1}`,
+              `${plan.catalogue_year + Math.floor(i / 2)}-semester-${(i % 2) + 1}`,
           ),
           ...plan.attempts.map((a) => a.term),
           ...courses.flatMap((c) => c.offerings.map((o) => o.key)),
           ...extraTerms,
         ]),
       ).sort((a, b) => a.localeCompare(b, undefined, { numeric: true })),
-    [plan.year, plan.attempts, courses, extraTerms],
+    [plan.catalogue_year, plan.attempts, courses, extraTerms],
   );
   const groupList =
-    plan.option === "general"
+    selectedOption === "general"
       ? degree?.groups
-      : degree?.options.find((o) => o.id === plan.option)?.groups;
+      : degree?.options.find((o) => o.id === selectedOption)?.groups;
   const required = new Set(groupList?.flatMap((g) => g.codes) ?? []);
   const checks = new Map(report?.course_checks.map((c) => [c.id, c]));
   async function switchYear(year: number) {
     try {
       await savePlan(plan);
-      const next = await loadPlan(year);
+      const other = (await listPlans()).find((item) =>
+        item.catalogue_year === year && item.degree_id === plan.degree_id);
+      const next = other ?? {
+        ...newPlan(year),
+        degree_id: catalogue?.degrees.some((item) => item.year === year && item.id === plan.degree_id)
+          ? plan.degree_id : catalogue?.degrees.find((item) => item.year === year)?.id ?? plan.degree_id,
+      };
       change(next);
       setSelected(null);
       setResults(null);
@@ -222,6 +239,39 @@ export default function App() {
     } catch {
       setError("Could not switch catalogue safely. Export your plan first.");
     }
+  }
+  async function switchPlan(id: string) {
+    try {
+      const next = await loadPlanById(id);
+      if (!next) throw new Error("Missing plan");
+      change(next);
+      setSelected(null);
+      setResults(null);
+      setExtraTerms([]);
+    } catch {
+      setError("Could not open this local plan.");
+    }
+  }
+  function createPlan(degreeId = plan.degree_id) {
+    const entry = catalogue?.degrees.find((item) => item.id === degreeId && item.year === plan.catalogue_year);
+    change({ ...newPlan(plan.catalogue_year), degree_id: degreeId,
+      name: `My ${entry?.title ?? "degree"} plan` });
+    setTab("planner");
+  }
+  function duplicatePlan() {
+    change({ ...plan, id: crypto.randomUUID(), name: `${plan.name} copy` });
+  }
+  function renamePlan() {
+    const name = window.prompt("Plan name", plan.name)?.trim();
+    if (name && name.length <= 100) change({ ...plan, name });
+  }
+  async function removePlan() {
+    if (plans.length < 2 || !window.confirm(`Delete ${plan.name} from this browser?`)) return;
+    const next = plans.find((item) => item.id !== plan.id);
+    if (!next) return;
+    await deletePlan(plan.id);
+    change(next);
+    setPlans((items) => items.filter((item) => item.id !== plan.id));
   }
   function addCourse(course: Course, term = periods[0]) {
     if (
@@ -259,9 +309,9 @@ export default function App() {
   }
   function standardPlan() {
     const rows =
-      (plan.option === "general"
+      (selectedOption === "general"
         ? degree?.standard_plan
-        : degree?.options.find((o) => o.id === plan.option)?.standard_plan) ??
+        : degree?.options.find((o) => o.id === selectedOption)?.standard_plan) ??
       [];
     const retained = plan.attempts.filter(
       (a) => a.status !== "PLANNED" || a.locked,
@@ -321,7 +371,7 @@ export default function App() {
     try {
       const route = await api<{ intent: string; course: string | null }>(
         "/route",
-        { query: value, year: plan.year },
+        { query: value, year: plan.catalogue_year },
       );
       if (sequence !== searchSequence.current) return;
       if (route.intent === "PLAN_GENERATE") {
@@ -369,7 +419,7 @@ export default function App() {
       setTab("courses");
       const response = await api<{ results: SearchResult[]; mode: string; coverage: { indexed_courses: number; catalogue_courses: number } }>(
         "/search",
-        { query: value, year: plan.year, degree: plan.degree, option: plan.option, compatible_first: compatible },
+        { query: value, year: plan.catalogue_year, degree: plan.degree_id, option: selectedOption, compatible_first: compatible },
       );
       if (sequence === searchSequence.current) {
         setResults(response.results);
@@ -456,11 +506,27 @@ export default function App() {
         <aside className="sidebar">
           <div className="workspace-tag">YOUR LITTLE ACADEMIC CORNER</div>
           <div className="degree-avatar">
-            <span>CS</span>
+            <span>{degree.program_code?.slice(0, 2) ?? degree.id.slice(0, 2).toUpperCase()}</span>
             <div>
-              <strong>Computer Science</strong>
-              <small>Undergraduate · BCOMP</small>
+              <strong>{degree.title}</strong>
+              <small>{degree.program_code ?? degree.id.toUpperCase()}</small>
             </div>
+          </div>
+          <div className="sidebar-label">MY PLANS</div>
+          <label className="plan-switcher">
+            Open local plan
+            <select aria-label="My plans" value={plan.id}
+              onChange={(event) => void switchPlan(event.target.value)}>
+              {(plans.some((item) => item.id === plan.id) ? plans : [...plans, plan]).map((item) => (
+                <option key={item.id} value={item.id}>{item.name} · {item.catalogue_year}</option>
+              ))}
+            </select>
+          </label>
+          <div className="plan-actions">
+            <button onClick={() => createPlan()} aria-label="New plan">New</button>
+            <button onClick={duplicatePlan} aria-label="Duplicate plan">Duplicate</button>
+            <button onClick={renamePlan} aria-label="Rename plan">Rename</button>
+            <button onClick={() => void removePlan()} aria-label="Delete plan" disabled={plans.length < 2}>Delete</button>
           </div>
           <div className="sidebar-label">MY DEGREE</div>
           <nav>
@@ -509,21 +575,17 @@ export default function App() {
         </aside>
         <main>
           <div className="breadcrumb">
-            My degree <ChevronRight size={12} /> Bachelor of Computer Science
+            My degree <ChevronRight size={12} /> {degree.title}
           </div>
           <section className="degree-cover">
             <div className="cover-grid" />
             <div className="cover-top">
               <span className="cover-label">YOUR DEGREE, UNTANGLED.</span>
-              <span className="cover-code">BCOMP / ADELAIDE</span>
+              <span className="cover-code">{degree.program_code ?? degree.id.toUpperCase()} / ADELAIDE</span>
             </div>
             <div className="cover-bottom">
               <div>
-                <h1>
-                  Bachelor of
-                  <br />
-                  Computer Science<span className="coral-dot">.</span>
-                </h1>
+                <h1>{degree.title}<span className="coral-dot">.</span></h1>
                 <p>One plan. Every possibility.</p>
               </div>
               <div className="cover-seal">
@@ -542,22 +604,29 @@ export default function App() {
                 <BookOpen size={14} />
                 {target} units
               </span>
-              <span>
-                <CalendarDays size={14} />3 year suggested sequence
-              </span>
+              {degree.duration && <span><CalendarDays size={14} />{degree.duration}</span>}
               <span className="source-state">
                 <span />
                 Source-backed catalogue
               </span>
             </div>
             <label className="year-select">
+              Degree{" "}
+              <select aria-label="Degree programme" value={plan.degree_id}
+                onChange={(event) => createPlan(event.target.value)}>
+                {catalogue.degrees.filter((item) => item.year === plan.catalogue_year).map((item) => (
+                  <option key={item.id} value={item.id}>{item.title}</option>
+                ))}
+              </select>
+            </label>
+            <label className="year-select">
               Catalogue{" "}
               <select
                 aria-label="Catalogue year"
-                value={plan.year}
+                value={plan.catalogue_year}
                 onChange={(e) => void switchYear(Number(e.target.value))}
               >
-                {catalogue.degrees.map((d) => (
+                {catalogue.degrees.filter((d) => d.id === plan.degree_id).map((d) => (
                   <option key={d.year} value={d.year}>
                     {d.year}
                   </option>
@@ -651,9 +720,9 @@ export default function App() {
                       Study pathway
                       <select
                         aria-label="Study pathway"
-                        value={plan.option}
+                        value={selectedOption}
                         onChange={(e) =>
-                          change({ ...plan, option: e.target.value })
+                          change({ ...plan, option_ids: e.target.value === "general" ? [] : [e.target.value] })
                         }
                       >
                         <option value="general">
@@ -928,7 +997,7 @@ export default function App() {
                   query={query} onQueryChange={setQuery} onSearch={doSearch}
                   searching={searching} results={results} courses={courses}
                   mode={mode} coverage={coverage} compatible={compatible}
-                  onCompatibleChange={(next) => { setCompatible(next); setResults(null); }}
+                  onCompatibleChange={(next) => { setCompatible(!next); setResults(null); }}
                   periods={periods} planningFromPeriod={planningFromPeriod}
                   onPlanningFromChange={setPlanningFromPeriod} fitMap={fitMap}
                   onSelect={setSelected} onAdd={addCourse}
@@ -962,7 +1031,7 @@ export default function App() {
                   <button
                     className="major-card panel"
                     onClick={() => {
-                      change({ ...plan, option: "general" });
+                      change({ ...plan, option_ids: [] });
                       setTab("planner");
                     }}
                   >
@@ -986,7 +1055,7 @@ export default function App() {
                         className="icon-button"
                         aria-label={`Select ${o.title}`}
                         onClick={() => {
-                          change({ ...plan, option: o.id });
+                          change({ ...plan, option_ids: [o.id] });
                           setTab("planner");
                         }}
                       >
@@ -1121,7 +1190,7 @@ export default function App() {
                     </div>
                   </div>
                   <div className="panel">
-                    <h3>Catalogue {plan.year}</h3>
+                    <h3>Catalogue {plan.catalogue_year}</h3>
                     <p>
                       Retrieved{" "}
                       {new Date(degree.source.fetched_at).toLocaleString(
@@ -1326,8 +1395,8 @@ export default function App() {
             if (file.size > 262144)
               throw new Error("File is larger than 256 KiB.");
             const imported = parseImport(await file.text());
-            if (!catalogue.degrees.some((d) => d.year === imported.year))
-              throw new Error("The imported catalogue year is not available.");
+            if (!catalogue.degrees.some((d) => d.year === imported.catalogue_year && d.id === imported.degree_id))
+              throw new Error("The imported degree and catalogue year are not available.");
             setImportCandidate(imported);
           } catch (e) {
             setError(`Import rejected: ${(e as Error).message}`);
@@ -1519,12 +1588,12 @@ export default function App() {
           close={() => setImportCandidate(null)}
         >
           <p>
-            <strong>{importCandidate.name}</strong> · {importCandidate.year}
+            <strong>{importCandidate.name}</strong> · {importCandidate.catalogue_year}
           </p>
           <p>
             {importCandidate.attempts.length} course attempts and{" "}
             {importCandidate.credits.length} assumptions. Importing replaces the
-            saved plan for this catalogue year.
+            saved plan with the same identifier, if present.
           </p>
           <div className="dialog-actions">
             <button

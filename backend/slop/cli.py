@@ -18,16 +18,40 @@ def main():
     crawl = commands.add_parser("ingest")
     crawl.add_argument("--years", type=int, nargs="+", default=[2026, 2027])
     crawl.add_argument("--output", type=Path, default=Path("data/fixtures/catalogue.json"))
+    discover = commands.add_parser("discover-degrees")
+    discover.add_argument("--year", type=int, required=True)
+    discover.add_argument("--output", type=Path, required=True)
     commands.add_parser("embed")
     commands.add_parser("quality")
     upstream = commands.add_parser("import-upstream")
     upstream.add_argument("file", type=Path)
     upstream.add_argument("--output", type=Path, required=True)
+    build = commands.add_parser("build-catalogue")
+    build.add_argument("--base", type=Path, required=True)
+    build.add_argument("--upstream", type=Path, required=True)
+    build.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "ingest":
         from slop.ingestion import ingest
 
         ingest(args.years, args.output)
+    elif args.command == "discover-degrees":
+        from slop.degree_discovery import discover_degrees
+
+        manifest = discover_degrees(args.year, args.output)
+        print(f"Discovered {len(manifest['degrees'])} unverified degree candidates")
+    elif args.command == "build-catalogue":
+        from slop.catalogue_build import course_quality, merge_upstream_courses
+
+        merged, summary = merge_upstream_courses(
+            json.loads(args.base.read_text()), json.loads(args.upstream.read_text())
+        )
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(merged, indent=2) + "\n")
+        print(json.dumps({"merge": summary,
+                          "quality_by_year": {year: course_quality([
+                              course for course in merged["courses"] if course["year"] == year
+                          ]) for year in sorted({d["year"] for d in merged["degrees"]})}}))
     elif args.command == "load-fixtures":
         payload = apply_overrides(json.loads(args.file.read_text()))
         if args.dry_run:

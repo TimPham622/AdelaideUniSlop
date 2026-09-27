@@ -47,6 +47,21 @@ def test_unfamiliar_degree_summary_cannot_disappear():
     assert not parse_degree(html, source)["summary_verified"]
 
 
+def test_source_backed_science_layout_is_distinct_and_fail_closed():
+    stem = "degree-2027-bachelor-of-science-excerpt"
+    source = json.loads((ROOT / f"{stem}.source.json").read_text())
+    parsed = parse_degree((ROOT / f"{stem}.html").read_text(), source)
+    assert parsed["id"] == "bachelor-of-science"
+    assert parsed["program_code"] == "BSCIE"
+    assert parsed["duration"] == "3 year(s) full-time"
+    assert parsed["total_units"] == 144
+    assert len(parsed["groups"]) == 4
+    assert len(parsed["options"]) > 1
+    assert parsed["summary_verified"] is False
+    assert parsed["verification"] == "PARTIAL"
+    assert all(group["rule"]["type"] == "UNKNOWN" for group in parsed["groups"])
+
+
 def test_crawler_blocks_arbitrary_urls_before_network(tmp_path):
     fetcher = Fetcher(tmp_path)
     for url in [

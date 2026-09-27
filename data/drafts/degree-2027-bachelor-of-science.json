@@ -1,0 +1,530 @@
+{
+  "id": "bachelor-of-science",
+  "title": "Bachelor of Science",
+  "year": 2027,
+  "requested_year": 2027,
+  "page_year": null,
+  "year_status": "UNKNOWN",
+  "program_code": "BSCIE",
+  "duration": "3 year(s) full-time",
+  "total_units": 144,
+  "overview": "",
+  "summary_raw": "Complete 144 units comprising: 42 to 54 units for Core Courses , and Either: 78 to 102 units for one Major from Majors , or 48 units from Discipline courses , and 6 to 18 units for Work integrated learning , and 0 to 48 units for Electives",
+  "summary_verified": false,
+  "groups": [
+    {
+      "id": "core-courses",
+      "title": "Core Courses",
+      "raw": "Complete 42 to 54 units comprising: 6 to 12 units for all Program Core , and 12 to 18 units from Common Core , and 6 to 30 units from Core Selective",
+      "units": null,
+      "codes": [
+        "SCIE1001",
+        "STAT1000",
+        "COREX001",
+        "COREX002",
+        "COREX003",
+        "COREX004",
+        "COREX005",
+        "COREX006",
+        "BIOL1003",
+        "BIOL1004",
+        "CHEM1000",
+        "CHEM1002",
+        "CHEM1003",
+        "EART1000",
+        "EART1012",
+        "MATH1000",
+        "MATH1004",
+        "MATH1005",
+        "MATH1015",
+        "MATHX104",
+        "MATHX202",
+        "PHYS1000",
+        "PHYS1001",
+        "PHYS1002"
+      ],
+      "rule": {
+        "type": "UNKNOWN",
+        "raw": "Complete 42 to 54 units comprising: 6 to 12 units for all Program Core , and 12 to 18 units from Common Core , and 6 to 30 units from Core Selective",
+        "warning": "Degree group requires reviewed override"
+      },
+      "verification": "UNKNOWN"
+    },
+    {
+      "id": "discipline-courses",
+      "title": "Discipline Courses",
+      "raw": "Complete exactly 48 units from the following:",
+      "units": null,
+      "codes": [],
+      "rule": {
+        "type": "UNKNOWN",
+        "raw": "Complete exactly 48 units from the following:",
+        "warning": "Degree group requires reviewed override"
+      },
+      "verification": "UNKNOWN"
+    },
+    {
+      "id": "work-integrated-learning",
+      "title": "Work Integrated Learning",
+      "raw": "Complete 6 to 18 units comprising: One of the following: 12 units from Analytical Chemistry, Chemistry, Nuclear Chemistry and Pure and Applied Chemistry work integrated learning , or 12 units for all Animal Behaviour work integrated learning , or 6 units for all Animal Science work integrated learning , or 18 units for all Biochemistry and Biotechnology work integrated learning , or 6 units for all Computational Physics work integrated learning , or 6 units for all Ecology and Marine and Wildlife Conservation work integrated learning , or 12 units for all Environmental and Geospatial Science and Environmental Science work integrated learning , or 6 units for all Evolutionary Biology work integrated learning , or 12 units for all Evolutionary Biology and Palaeontology work integrated learning , or 6 units for all Experimental Physics work integrated learning , or 6 units for all Food Science and Technology work integrated learning , or 18 units from Genetics work integrated learning , or 6 units for all Geology and Geology and Earth Resources work integrated learning , or 6 units for all Geology and Palaeontology work integrated learning , or 6 units for all Geophysics work integrated learning , or 6 units for all Medicinal and Biological Chemistry work integrated learning , or 18 units for all Microbiology and Immunology work integrated learning , or 6 units from Nuclear and Radiation Physics and Theoretical Physics work integrated learning , or 12 units for all Physics and Geophysics work integrated learning , or 6 units for all Plant Biology work integrated learning , or 6 units for all Soil Science work integrated learning , or 6 units for all Space Science and Astrophysics work integrated learning , and 0 to 6 units from Additional work integrated learning - Optional",
+      "units": null,
+      "codes": [
+        "PHYSX300",
+        "PHYSX301",
+        "EART3004",
+        "PHYSX301",
+        "SCIE3900",
+        "EART3006",
+        "SCIE3900",
+        "PHYSX301",
+        "SCIE3900",
+        "CHEM3001",
+        "CHEM3002",
+        "CHEM3003",
+        "ANIM3900",
+        "ANIM2901",
+        "ANIM3005",
+        "BIOL2900",
+        "BIOL3007",
+        "BIOL3011",
+        "PHYSX300",
+        "BIOL3013",
+        "ENVI3014",
+        "BIOL3036",
+        "EART3002",
+        "BIOL3036",
+        "PHYSX301",
+        "FOOD3900",
+        "BIOL2900",
+        "BIOL3007",
+        "BIOL3092",
+        "EART3003",
+        "EART3002",
+        "EART3004",
+        "CHEM3001",
+        "BIOL2900",
+        "BIOL3007",
+        "BIOL3012"
+      ],
+      "rule": {
+        "type": "UNKNOWN",
+        "raw": "Complete 6 to 18 units comprising: One of the following: 12 units from Analytical Chemistry, Chemistry, Nuclear Chemistry and Pure and Applied Chemistry work integrated learning , or 12 units for all Animal Behaviour work integrated learning , or 6 units for all Animal Science work integrated learning , or 18 units for all Biochemistry and Biotechnology work integrated learning , or 6 units for all Computational Physics work integrated learning , or 6 units for all Ecology and Marine and Wildlife Conservation work integrated learning , or 12 units for all Environmental and Geospatial Science and Environmental Science work integrated learning , or 6 units for all Evolutionary Biology work integrated learning , or 12 units for all Evolutionary Biology and Palaeontology work integrated learning , or 6 units for all Experimental Physics work integrated learning , or 6 units for all Food Science and Technology work integrated learning , or 18 units from Genetics work integrated learning , or 6 units for all Geology and Geology and Earth Resources work integrated learning , or 6 units for all Geology and Palaeontology work integrated learning , or 6 units for all Geophysics work integrated learning , or 6 units for all Medicinal and Biological Chemistry work integrated learning , or 18 units for all Microbiology and Immunology work integrated learning , or 6 units from Nuclear and Radiation Physics and Theoretical Physics work integrated learning , or 12 units for all Physics and Geophysics work integrated learning , or 6 units for all Plant Biology work integrated learning , or 6 units for all Soil Science work integrated learning , or 6 units for all Space Science and Astrophysics work integrated learning , and 0 to 6 units from Additional work integrated learning - Optional",
+        "warning": "Degree group requires reviewed override"
+      },
+      "verification": "UNKNOWN"
+    },
+    {
+      "id": "electives",
+      "title": "Electives",
+      "raw": "Complete 0 to 48 units for either of the following: 0 to 48 units from Free Electives , or 0 to 48 units from Electives - unspecified plan",
+      "units": null,
+      "codes": [],
+      "rule": {
+        "type": "UNKNOWN",
+        "raw": "Complete 0 to 48 units for either of the following: 0 to 48 units from Free Electives , or 0 to 48 units from Electives - unspecified plan",
+        "warning": "Degree group requires reviewed override"
+      },
+      "verification": "UNKNOWN"
+    }
+  ],
+  "options": [
+    {
+      "id": "bachelor-of-science-analytical-chemistry",
+      "title": "Analytical Chemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-analytical-chemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-animal-behaviour",
+      "title": "Animal Behaviour",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-animal-behaviour/dom/"
+    },
+    {
+      "id": "bachelor-of-science-animal-science",
+      "title": "Animal Science",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-animal-science/dom/"
+    },
+    {
+      "id": "bachelor-of-science-biochemistry",
+      "title": "Biochemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-biochemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-biotechnology",
+      "title": "Biotechnology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-biotechnology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-chemistry",
+      "title": "Chemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-chemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-computational-physics",
+      "title": "Computational Physics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-computational-physics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-ecology",
+      "title": "Ecology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-ecology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-environmental-and-geospatial-science",
+      "title": "Environmental and Geospatial Science",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-environmental-and-geospatial-science/dom/"
+    },
+    {
+      "id": "bachelor-of-science-environmental-science",
+      "title": "Environmental Science",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-environmental-science/dom/"
+    },
+    {
+      "id": "bachelor-of-science-evolutionary-biology",
+      "title": "Evolutionary Biology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-evolutionary-biology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-evolutionary-biology-and-palaeontology",
+      "title": "Evolutionary Biology and Palaeontology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-evolutionary-biology-and-palaeontology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-experimental-physics",
+      "title": "Experimental Physics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-experimental-physics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-food-science-and-technology",
+      "title": "Food Science and Technology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-food-science-and-technology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-genetics",
+      "title": "Genetics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-genetics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-geology",
+      "title": "Geology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-geology-and-earth-resources",
+      "title": "Geology and Earth Resources",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology-and-earth-resources/dom/"
+    },
+    {
+      "id": "bachelor-of-science-geology-and-palaeontology",
+      "title": "Geology and Palaeontology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geology-and-palaeontology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-geophysics",
+      "title": "Geophysics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-geophysics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-marine-and-wildlife-conservation",
+      "title": "Marine and Wildlife Conservation",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-marine-and-wildlife-conservation/dom/"
+    },
+    {
+      "id": "bachelor-of-science-medicinal-and-biological-chemistry",
+      "title": "Medicinal and Biological Chemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-medicinal-and-biological-chemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-microbiology-and-immunology",
+      "title": "Microbiology and Immunology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-microbiology-and-immunology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-nuclear-and-radiation-physics",
+      "title": "Nuclear and Radiation Physics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-nuclear-and-radiation-physics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-nuclear-chemistry",
+      "title": "Nuclear Chemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-nuclear-chemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-physics-and-geophysics",
+      "title": "Physics and Geophysics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-physics-and-geophysics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-pure-and-applied-chemistry",
+      "title": "Pure and Applied Chemistry",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-pure-and-applied-chemistry/dom/"
+    },
+    {
+      "id": "bachelor-of-science-plant-biology",
+      "title": "Plant Biology",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-plant-biology/dom/"
+    },
+    {
+      "id": "bachelor-of-science-soil-science",
+      "title": "Soil Science",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-soil-science/dom/"
+    },
+    {
+      "id": "bachelor-of-science-space-science-and-astrophysics",
+      "title": "Space Science and Astrophysics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-space-science-and-astrophysics/dom/"
+    },
+    {
+      "id": "bachelor-of-science-theoretical-physics",
+      "title": "Theoretical Physics",
+      "source_url": "https://adelaide.edu.au/study/degrees/bachelor-of-science-theoretical-physics/dom/"
+    }
+  ],
+  "course_references": {
+    "SCIE1001": {
+      "code": "SCIE1001",
+      "title": "Science of People, Society and the Future Planet",
+      "units": 6
+    },
+    "STAT1000": {
+      "code": "STAT1000",
+      "title": "Data Skills for Scientists",
+      "units": 6
+    },
+    "COREX001": {
+      "code": "COREX001",
+      "title": "An Ethically Rich Life",
+      "units": 6
+    },
+    "COREX002": {
+      "code": "COREX002",
+      "title": "Fact or Fiction: Data for Everyone",
+      "units": 6
+    },
+    "COREX003": {
+      "code": "COREX003",
+      "title": "Igniting Change: Ideas to Action",
+      "units": 6
+    },
+    "COREX004": {
+      "code": "COREX004",
+      "title": "Transforming Learning through First Nations Knowledges",
+      "units": 6
+    },
+    "COREX005": {
+      "code": "COREX005",
+      "title": "Responsible AI: Bridging Ethics, Education and Industry",
+      "units": 6
+    },
+    "COREX006": {
+      "code": "COREX006",
+      "title": "Building Belonging: Navigating Cultural Complexities",
+      "units": 6
+    },
+    "BIOL1003": {
+      "code": "BIOL1003",
+      "title": "Biology 1A: Molecules, Genes and Cells",
+      "units": 6
+    },
+    "BIOL1004": {
+      "code": "BIOL1004",
+      "title": "Biology 1B: Evolution and Diversity of Organisms",
+      "units": 6
+    },
+    "CHEM1000": {
+      "code": "CHEM1000",
+      "title": "Foundations in Chemistry",
+      "units": 6
+    },
+    "CHEM1002": {
+      "code": "CHEM1002",
+      "title": "Chemistry 1A",
+      "units": 6
+    },
+    "CHEM1003": {
+      "code": "CHEM1003",
+      "title": "Chemistry 1B",
+      "units": 6
+    },
+    "EART1000": {
+      "code": "EART1000",
+      "title": "Planet Earth",
+      "units": 6
+    },
+    "EART1012": {
+      "code": "EART1012",
+      "title": "Earth, Climate and Life Systems",
+      "units": 6
+    },
+    "MATH1000": {
+      "code": "MATH1000",
+      "title": "Foundations in Mathematics",
+      "units": 6
+    },
+    "MATH1004": {
+      "code": "MATH1004",
+      "title": "Calculus 1",
+      "units": 6
+    },
+    "MATH1005": {
+      "code": "MATH1005",
+      "title": "Calculus 2",
+      "units": 6
+    },
+    "MATH1015": {
+      "code": "MATH1015",
+      "title": "Essential Mathematics",
+      "units": 6
+    },
+    "MATHX104": {
+      "code": "MATHX104",
+      "title": "Linear Algebra",
+      "units": 6
+    },
+    "MATHX202": {
+      "code": "MATHX202",
+      "title": "Differential Equations",
+      "units": 6
+    },
+    "PHYS1000": {
+      "code": "PHYS1000",
+      "title": "Foundations in Physics",
+      "units": 6
+    },
+    "PHYS1001": {
+      "code": "PHYS1001",
+      "title": "Physics 1A",
+      "units": 6
+    },
+    "PHYS1002": {
+      "code": "PHYS1002",
+      "title": "Physics 1B",
+      "units": 6
+    },
+    "PHYSX300": {
+      "code": "PHYSX300",
+      "title": "Computational Physics",
+      "units": 6
+    },
+    "PHYSX301": {
+      "code": "PHYSX301",
+      "title": "Experimental Physics",
+      "units": 6
+    },
+    "EART3004": {
+      "code": "EART3004",
+      "title": "Geophysics 3C: Seismic Processing and Interpretation",
+      "units": 6
+    },
+    "SCIE3900": {
+      "code": "SCIE3900",
+      "title": "Science Professional Placement",
+      "units": 6
+    },
+    "EART3006": {
+      "code": "EART3006",
+      "title": "Landscape Evolution 3",
+      "units": 6
+    },
+    "CHEM3001": {
+      "code": "CHEM3001",
+      "title": "Organic Chemistry 3",
+      "units": 6
+    },
+    "CHEM3002": {
+      "code": "CHEM3002",
+      "title": "Inorganic Chemistry 3",
+      "units": 6
+    },
+    "CHEM3003": {
+      "code": "CHEM3003",
+      "title": "Physical Chemistry 3",
+      "units": 6
+    },
+    "ANIM3900": {
+      "code": "ANIM3900",
+      "title": "Advanced Applications in Animal Behaviour",
+      "units": 12
+    },
+    "ANIM2901": {
+      "code": "ANIM2901",
+      "title": "Professional Skills in Animal Science 2",
+      "units": 6
+    },
+    "ANIM3005": {
+      "code": "ANIM3005",
+      "title": "Professional Skills in Animal Science 3",
+      "units": 6
+    },
+    "BIOL2900": {
+      "code": "BIOL2900",
+      "title": "Molecular and Biomedical Science Practical 2",
+      "units": 6
+    },
+    "BIOL3007": {
+      "code": "BIOL3007",
+      "title": "Molecular and Biomedical Sciences Practical 3",
+      "units": 6
+    },
+    "BIOL3011": {
+      "code": "BIOL3011",
+      "title": "Biochemistry 3: Practical",
+      "units": 6
+    },
+    "BIOL3013": {
+      "code": "BIOL3013",
+      "title": "Research Methods: Ecology, Marine and Wildlife 3",
+      "units": 6
+    },
+    "ENVI3014": {
+      "code": "ENVI3014",
+      "title": "Environmental and Geospatial Field Project",
+      "units": 12
+    },
+    "BIOL3036": {
+      "code": "BIOL3036",
+      "title": "Evolutionary Biology 3 Practical",
+      "units": 6
+    },
+    "EART3002": {
+      "code": "EART3002",
+      "title": "Field Palaeontology 3",
+      "units": 6
+    },
+    "FOOD3900": {
+      "code": "FOOD3900",
+      "title": "Food Science Placement",
+      "units": 6
+    },
+    "BIOL3092": {
+      "code": "BIOL3092",
+      "title": "Genetics Practical 3",
+      "units": 6
+    },
+    "EART3003": {
+      "code": "EART3003",
+      "title": "Field Geoscience Program 3",
+      "units": 6
+    },
+    "BIOL3012": {
+      "code": "BIOL3012",
+      "title": "Microbiology and Immunology Practical 3",
+      "units": 6
+    }
+  },
+  "standard_plan": [],
+  "source": {
+    "requested_url": "https://adelaide.edu.au/study/degrees/2027/bachelor-of-science/dom/",
+    "status_code": 200,
+    "canonical_url": "https://adelaide.edu.au/study/degrees/2027/bachelor-of-science/dom/",
+    "year": 2027,
+    "fetched_at": "2026-09-27T07:04:43.822609+00:00",
+    "sha256": "cdc32e92442ea6a5fa27764e9e3df5f914012bbaf297f5c0706018de992427c8",
+    "parser_version": "adelaide-1.1.0",
+    "etag": null,
+    "last_modified": null
+  },
+  "source_status": "SOURCE_UNVERIFIED",
+  "parse_status": "UNPARSED",
+  "verification": "PARTIAL",
+  "double_counting": "UNKNOWN"
+}

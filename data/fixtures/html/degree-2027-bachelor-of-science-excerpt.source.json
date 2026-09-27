@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://adelaide.edu.au/study/degrees/2027/bachelor-of-science/dom/",
+  "status_code": 200,
+  "canonical_url": "https://adelaide.edu.au/study/degrees/2027/bachelor-of-science/dom/",
+  "year": 2027,
+  "fetched_at": "2026-09-27T07:04:43.822609+00:00",
+  "sha256": "cdc32e92442ea6a5fa27764e9e3df5f914012bbaf297f5c0706018de992427c8",
+  "parser_version": "adelaide-1.1.0",
+  "etag": null,
+  "last_modified": null
+}

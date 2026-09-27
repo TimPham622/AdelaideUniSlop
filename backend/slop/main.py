@@ -41,7 +41,9 @@ async def protection(request: Request, call_next):
             request.client.host if request.client else "unknown",
             "expensive"
             if request.url.path in {"/api/search", "/api/plan/generate", "/api/plan/path",
-                                    "/api/plan/can-take"}
+                                    "/api/plan/can-take", "/api/v1/search",
+                                    "/api/v1/plan/generate", "/api/v1/plan/path",
+                                    "/api/v1/plan/can-take"}
             else "regular",
         )
         limit = 30 if key[1] == "expensive" else 180
@@ -115,6 +117,7 @@ def ready():
 
 
 @app.get("/api/catalogue")
+@app.get("/api/v1/catalogue")
 def get_catalogue(request: Request):
     with Session(engine) as session:
         data = catalogue(session)
@@ -123,6 +126,7 @@ def get_catalogue(request: Request):
 
 
 @app.get("/api/requirement-fit")
+@app.get("/api/v1/requirement-fit")
 def get_requirement_fit(year: int, degree: str = "bcomp", option: str = "general"):
     with Session(engine) as session:
         data = catalogue(session)
@@ -131,12 +135,14 @@ def get_requirement_fit(year: int, degree: str = "bcomp", option: str = "general
 
 
 @app.post("/api/plan/validate")
+@app.post("/api/v1/plan/validate")
 def validate_plan(plan: Plan):
     with Session(engine) as session:
         return validate(plan, catalogue(session))
 
 
 @app.post("/api/plan/generate")
+@app.post("/api/v1/plan/generate")
 def generate_plan(plan: Plan):
     with Session(engine) as session:
         data = catalogue(session)
@@ -144,6 +150,7 @@ def generate_plan(plan: Plan):
 
 
 @app.post("/api/plan/path")
+@app.post("/api/v1/plan/path")
 def prerequisite_path(request: PathRequest):
     with Session(engine) as session:
         data = catalogue(session)
@@ -151,6 +158,7 @@ def prerequisite_path(request: PathRequest):
 
 
 @app.post("/api/plan/can-take")
+@app.post("/api/v1/plan/can-take")
 def check_takeability(request: CanTakeRequest):
     with Session(engine) as session:
         data = catalogue(session)
@@ -158,6 +166,7 @@ def check_takeability(request: CanTakeRequest):
 
 
 @app.post("/api/search")
+@app.post("/api/v1/search")
 def search_courses(request: SearchRequest):
     with Session(engine) as session:
         return search(
@@ -173,11 +182,13 @@ def search_courses(request: SearchRequest):
 
 
 @app.post("/api/route")
+@app.post("/api/v1/route")
 def route_query(request: SearchRequest):
     return route(request.query)
 
 
 @app.get("/api/privacy")
+@app.get("/api/v1/privacy")
 def privacy():
     return {
         "plans": "Stored only in your browser. Validation and generation send transient plan contents to this server.",
@@ -185,3 +196,61 @@ def privacy():
         "limits": "Short-lived in-memory IP rate limits expire after one minute.",
         "ai": "Generative AI is disabled. Local embeddings power semantic retrieval.",
     }
+
+
+@app.get("/api/v1/degrees")
+def list_degrees(year: int | None = None, q: str = ""):
+    if len(q) > 200:
+        raise HTTPException(422, "Search query is too long")
+    with Session(engine) as session:
+        degrees = catalogue(session)["degrees"]
+    needle = q.casefold().strip()
+    rows = [d for d in degrees if (year is None or d["year"] == year)
+            and (not needle or needle in d.get("title", "").casefold()
+                 or needle in d.get("id", "").casefold()
+                 or needle in d.get("program_code", "").casefold())]
+    return {"results": sorted(rows, key=lambda d: (d.get("title", d["id"]), d["year"])),
+            "count": len(rows)}
+
+
+@app.get("/api/v1/degrees/{degree_id}")
+def get_degree(degree_id: str, year: int | None = None):
+    with Session(engine) as session:
+        versions = [d for d in catalogue(session)["degrees"] if d["id"] == degree_id
+                    and (year is None or d["year"] == year)]
+    if not versions:
+        raise HTTPException(404, "Degree version not found")
+    return max(versions, key=lambda d: d["year"])
+
+
+@app.get("/api/v1/courses")
+def list_courses(year: int | None = None, q: str = "", limit: int = 50, offset: int = 0):
+    if len(q) > 200 or not 1 <= limit <= 100 or offset < 0:
+        raise HTTPException(422, "Invalid catalogue query")
+    with Session(engine) as session:
+        courses = catalogue(session)["courses"]
+    needle = q.casefold().strip()
+    rows = [c for c in courses if (year is None or c["year"] == year)
+            and (not needle or needle in c["code"].casefold()
+                 or needle in c["title"].casefold())]
+    rows.sort(key=lambda c: (c["code"], c["year"]))
+    return {"results": rows[offset:offset + limit], "count": len(rows)}
+
+
+@app.get("/api/v1/courses/{code}/versions")
+def course_versions(code: str):
+    with Session(engine) as session:
+        versions = [c for c in catalogue(session)["courses"] if c["code"] == code.upper()]
+    if not versions:
+        raise HTTPException(404, "Course not found")
+    return {"results": sorted(versions, key=lambda c: c["year"])}
+
+
+@app.get("/api/v1/courses/{code}")
+def get_course(code: str, year: int | None = None):
+    with Session(engine) as session:
+        versions = [c for c in catalogue(session)["courses"] if c["code"] == code.upper()
+                    and (year is None or c["year"] == year)]
+    if not versions:
+        raise HTTPException(404, "Course version not found")
+    return max(versions, key=lambda c: c["year"])

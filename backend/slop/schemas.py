@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -29,18 +29,49 @@ class Credit(Strict):
 
 
 class Plan(Strict):
-    schema_version: Literal[1] = 1
+    schema_version: Literal[2] = 2
+    id: str = Field(default="legacy-plan", min_length=1, max_length=100)
     name: str = Field(default="My computer science plan", min_length=1, max_length=100)
-    year: int = Field(ge=2020, le=2100)
-    degree: Literal["bcomp"] = "bcomp"
-    option: str = Field(default="general", max_length=150)
+    catalogue_year: int = Field(ge=2020, le=2100)
+    degree_id: str = Field(min_length=1, max_length=80)
+    option_ids: list[str] = Field(default_factory=list, max_length=1)
+    audience: Literal["domestic", "international"] = "domestic"
     attempts: list[Attempt] = Field(default_factory=list, max_length=200)
     credits: list[Credit] = Field(default_factory=list, max_length=100)
     max_units: int = Field(default=24, ge=6, le=48)
     preference: Literal["earliest", "avoid_exams_early", "prefer_no_exam", "balanced"] = "earliest"
 
+    @model_validator(mode="before")
+    @classmethod
+    def migrate_legacy(cls, value: Any):
+        if not isinstance(value, dict):
+            return value
+        if value.get("schema_version", 1) != 1:
+            return value
+        migrated = dict(value)
+        migrated["schema_version"] = 2
+        migrated["catalogue_year"] = migrated.pop("year")
+        migrated["degree_id"] = migrated.pop("degree", "bcomp")
+        option = migrated.pop("option", "general")
+        migrated["option_ids"] = [] if option == "general" else [option]
+        return migrated
+
+    @property
+    def year(self) -> int:
+        return self.catalogue_year
+
+    @property
+    def degree(self) -> str:
+        return self.degree_id
+
+    @property
+    def option(self) -> str:
+        return self.option_ids[0] if self.option_ids else "general"
+
     @model_validator(mode="after")
     def unique_ids(self):
+        if any(not option or len(option) > 150 for option in self.option_ids):
+            raise ValueError("Option identifiers must be 1–150 characters")
         ids = [a.id for a in self.attempts]
         if len(ids) != len(set(ids)):
             raise ValueError("Attempt IDs must be unique")
