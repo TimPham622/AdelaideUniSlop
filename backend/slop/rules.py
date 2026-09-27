@@ -8,6 +8,8 @@ from typing import Literal
 from lark import Lark, Transformer, UnexpectedInput
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from slop.course_codes import SOURCE_CODE_FRAGMENT, normalize_course_code
+
 Status = Literal["SATISFIED", "UNSATISFIED", "UNKNOWN"]
 
 
@@ -45,7 +47,7 @@ _GRAMMAR = r"""
             | atom
 ?atom: CODE -> course
      | "(" expr ")"
-CODE: /[A-Z]{3,8}\s?[0-9]{4}[A-Z]?/
+CODE: /[A-Z]{3,10}\s?[0-9]{3,4}[A-Z]?/
 %import common.WS
 %ignore WS
 """
@@ -53,7 +55,7 @@ CODE: /[A-Z]{3,8}\s?[0-9]{4}[A-Z]?/
 
 class _Tree(Transformer):
     def course(self, xs):
-        return Rule(type="COURSE", course=re.sub(r"\s", "", str(xs[0])))
+        return Rule(type="COURSE", course=normalize_course_code(str(xs[0])))
 
     def all_of(self, xs):
         return Rule(type="ALL", children=xs)
@@ -65,28 +67,56 @@ class _Tree(Transformer):
 _parser = Lark(_GRAMMAR, parser="lalr", transformer=_Tree())
 
 
-def compile_rule(raw: str | None) -> Rule:
+def compile_requisite(kind: str, raw: str | None) -> Rule:
+    if kind not in {"prerequisite", "corequisite", "antirequisite"}:
+        raise ValueError("Unknown requisite kind")
+    return compile_rule(raw, kind=kind)
+
+
+def _titled_course(part: str) -> str | None:
+    """Remove a clearly title-cased display name, never an arbitrary clause."""
+    match = re.fullmatch(rf"({SOURCE_CODE_FRAGMENT})(?:\s+(.+))?", part.strip())
+    if not match:
+        return None
+    title = match[2]
+    if title and not re.fullmatch(
+        r"[A-Z][\w'’.-]*(?:\s+(?:[A-Z][\w'’.-]*|and|for|of|the|in|to))*", title
+    ):
+        return None
+    return normalize_course_code(match[1])
+
+
+def compile_rule(raw: str | None, *, kind: str = "prerequisite") -> Rule:
     if raw is None:
         return Rule(type="UNKNOWN", warning="Requisite field is missing")
     text = re.sub(r"\s+", " ", raw).strip()
     if text.lower() in {"n/a", "none", "nil", "not applicable", "no prerequisites"}:
         return Rule(type="ALL", raw=raw)
     # Empty source is not evidence that there are no prerequisites.
+    prefix = (
+        r"^(?:must not have completed)\s+"
+        if kind == "antirequisite"
+        else r"^(?:must have completed|successful completion of|completion of)\s+"
+    )
     cleaned = re.sub(
-        r"^(?:must have completed|successful completion of|completion of)\s+",
+        prefix,
         "",
         text,
         flags=re.IGNORECASE,
     ).rstrip(".")
-    listed = re.fullmatch(r"(all of|1 of|one of)\s+([A-Z0-9 /]+)", cleaned, flags=re.IGNORECASE)
+    listed = re.fullmatch(r"(all of|1 of|one of)\s+(.+)", cleaned, flags=re.IGNORECASE)
     if listed:
-        codes = [part.strip() for part in listed[2].split("/")]
-        if codes and all(re.fullmatch(r"[A-Z]{3,8}\s?\d{4}[A-Z]?", c) for c in codes):
+        parts = listed[2].split("/")
+        codes = [_titled_course(part) for part in parts]
+        if len(codes) >= 2 and all(codes):
             return Rule(
                 type="ALL" if listed[1].lower() == "all of" else "ANY",
-                children=[Rule(type="COURSE", course=c.replace(" ", "")) for c in codes],
+                children=[Rule(type="COURSE", course=c) for c in codes],
                 raw=raw,
             )
+    single = _titled_course(cleaned)
+    if single:
+        return Rule(type="COURSE", course=single, raw=raw)
     match = re.fullmatch(r"(\d+) units(?: of (?:Level|level) (\d+) study)?", cleaned)
     if match:
         return Rule(
@@ -149,20 +179,24 @@ def evaluate(
             children[0]["status"]
         ]
     else:
-        selected = [
+        candidates = [
             courses[c]
             for c in completed
             if c in courses and (rule.codes is None or c in rule.codes)
         ]
         selected = [
             c
-            for c in selected
+            for c in candidates
             if (rule.level is None or c["level"] == rule.level)
             and (not rule.elective or c.get("elective") is True)
         ]
         actual = sum(c.get("units") or 0 for c in selected)
         if any(c.get("units") is None for c in selected) or any(
             c not in courses for c in completed
+        ) or any(
+            (rule.level is not None and c.get("level") is None)
+            or (rule.elective and c.get("elective") is None)
+            for c in candidates
         ):
             state = "UNKNOWN"
         else:

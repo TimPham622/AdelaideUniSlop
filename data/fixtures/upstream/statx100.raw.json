@@ -1,0 +1,19 @@
+{
+  "id": "c9f0f3f47482",
+  "course_id": 208187,
+  "year": "2026",
+  "terms": "Semester 1",
+  "subject": "Statistics",
+  "course_code": "STATX100",
+  "title": "Probability and Statistics",
+  "units": 6,
+  "course_level": "1",
+  "course_overview": "",
+  "prerequisites": "Must have completed MATH1000 Foundations in Mathematics OR must have completed SACE Stage 2 Mathematical Methods",
+  "corequisites": "N/A",
+  "antirequisites": "N/A",
+  "university_wide_elective": true,
+  "url": "https://adelaideuni.edu.au/study/courses/statx-100",
+  "learning_outcomes": [],
+  "assessments": []
+}

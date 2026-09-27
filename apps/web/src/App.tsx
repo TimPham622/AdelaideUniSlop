@@ -27,6 +27,14 @@ import {
   CalendarDays,
 } from "lucide-react";
 import { api } from "./api";
+import { AcademicStatusBadge as Badge } from "./components/AcademicStatusBadge";
+import { Dialog } from "./components/Dialog";
+import { ParseStatusBadge } from "./components/ParseStatusBadge";
+import { RuleTree } from "./components/RuleTree";
+import { SourceLink } from "./components/SourceLink";
+import { SourceStatusBadge } from "./SourceStatusBadge";
+import { termLabel } from "./domain/period";
+import { CourseSearchView } from "./views/CourseSearchView";
 import { db, loadPlan, savePlan, exportPlan, parseImport } from "./storage";
 import {
   newPlan,
@@ -34,114 +42,14 @@ import {
   type Catalogue,
   type Course,
   type Report,
-  type Rule,
   type Solution,
   type SearchResult,
-  type Source,
+  type Takeability,
   type Attempt,
 } from "./types";
 
 type Tab =
   "planner" | "requirements" | "courses" | "degree" | "credits" | "sources";
-const statusText: Record<string, string> = {
-  SATISFIED: "Satisfied",
-  UNSATISFIED: "Not satisfied",
-  UNKNOWN: "Unknown",
-  CONDITIONAL: "Conditional",
-  VALID: "Valid",
-  INVALID: "Incomplete / invalid",
-  INFEASIBLE: "No solution",
-};
-function Badge({ status }: { status: string }) {
-  return (
-    <span className={`badge ${status.toLowerCase()}`}>
-      {statusText[status] ?? status.replaceAll("_", " ").toLowerCase()}
-    </span>
-  );
-}
-function termLabel(term: string) {
-  const [year, ...rest] = term.split("-");
-  return `${rest.join(" ").replace(/^\w/, (s) => s.toUpperCase())} · ${year}`;
-}
-function RuleTree({ rule }: { rule: Rule }) {
-  return (
-    <div className="rule-tree">
-      {rule.type === "COURSE" ? (
-        <code>{rule.course}</code>
-      ) : rule.type === "UNKNOWN" ? (
-        <span>{rule.warning ?? "Needs source review"}</span>
-      ) : rule.type === "ALL" && !rule.children?.length ? (
-        <span>No listed requirement</span>
-      ) : (
-        <>
-          <strong>
-            {rule.type === "ALL"
-              ? "All of"
-              : rule.type === "ANY"
-                ? `At least ${rule.min_selected ?? 1} of`
-                : rule.type === "NOT"
-                  ? "Must not have"
-                  : `${rule.type.replaceAll("_", " ")}: ${rule.units ?? ""}`}
-          </strong>
-          {rule.children?.map((r, i) => (
-            <RuleTree key={i} rule={r} />
-          ))}
-        </>
-      )}
-    </div>
-  );
-}
-function SourceLink({ source }: { source: Source }) {
-  return (
-    <a href={source.requested_url} target="_blank" rel="noreferrer">
-      Official source <ArrowUpRight size={13} />
-    </a>
-  );
-}
-function Dialog({
-  title,
-  close,
-  children,
-}: {
-  title: string;
-  close: () => void;
-  children: ReactNode;
-}) {
-  const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    const element = ref.current;
-    const before = document.activeElement as HTMLElement | null;
-    element?.showModal();
-    return () => {
-      element?.close();
-      before?.focus();
-    };
-  }, []);
-  return (
-    <dialog
-      ref={ref}
-      onCancel={(e) => {
-        e.preventDefault();
-        close();
-      }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) close();
-      }}
-    >
-      <div className="dialog-head">
-        <h2>{title}</h2>
-        <button
-          className="icon-button"
-          aria-label="Close dialog"
-          onClick={close}
-        >
-          <X size={20} />
-        </button>
-      </div>
-      <div className="dialog-body">{children}</div>
-    </dialog>
-  );
-}
 export default function App() {
   const [catalogue, setCatalogue] = useState<Catalogue | null>(null);
   const [plan, setPlan] = useState<Plan>(newPlan(2026));
@@ -155,6 +63,10 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[] | null>(null);
   const [mode, setMode] = useState("");
+  const [coverage, setCoverage] = useState<{ indexed_courses: number; catalogue_courses: number } | null>(null);
+  const [fitMap, setFitMap] = useState<Record<string, SearchResult["requirement_fit"]>>({});
+  const [planningFromPeriod, setPlanningFromPeriod] = useState("");
+  const [takeability, setTakeability] = useState<Takeability | null>(null);
   const [compatible, setCompatible] = useState(true);
   const [searching, setSearching] = useState(false);
   const [selected, setSelected] = useState<Course | null>(null);
@@ -252,7 +164,19 @@ export default function App() {
       abort.abort();
     };
   }, [plan, catalogue, loaded]);
-  const degree = catalogue?.degrees.find((d) => d.year === plan.year);
+  useEffect(() => {
+    if (!catalogue) return;
+    let active = true;
+    setFitMap({});
+    setResults(null);
+    void api<Record<string, SearchResult["requirement_fit"]>>(
+      `/requirement-fit?year=${plan.year}&degree=${encodeURIComponent(plan.degree)}&option=${encodeURIComponent(plan.option)}`,
+    ).then((fits) => { if (active) setFitMap(fits); }).catch(() => {
+      if (active) setFitMap({});
+    });
+    return () => { active = false; };
+  }, [catalogue, plan.year, plan.degree, plan.option]);
+  const degree = catalogue?.degrees.find((d) => d.year === plan.year && d.id === plan.degree);
   const courses = useMemo(
     () => catalogue?.courses.filter((c) => c.year === plan.year) ?? [],
     [catalogue, plan.year],
@@ -261,6 +185,9 @@ export default function App() {
     () => new Map(courses.map((c) => [c.code, c])),
     [courses],
   );
+  const versionMap = useMemo(() => new Map<string, Course>(
+    catalogue?.courses.map((c): [string, Course] => [`${c.year}:${c.code}`, c]) ?? []
+  ), [catalogue]);
   const periods = useMemo(
     () =>
       Array.from(
@@ -374,6 +301,18 @@ export default function App() {
       setBusy(false);
     }
   }
+  async function checkTakeability(target: string, period: string) {
+    setBusy(true);
+    setError("");
+    try {
+      const result = await api<Takeability>("/plan/can-take", { plan, target, period });
+      setTakeability(result);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   async function doSearch(value = query) {
     if (!value.trim()) return;
     const sequence = ++searchSequence.current;
@@ -393,6 +332,29 @@ export default function App() {
         setTab("requirements");
         return;
       }
+      if (route.intent === "CAN_TAKE" && route.course) {
+        setTab("courses");
+        const explicit = value.match(/\b(20\d{2})\s+(semester|trimester|term)\s+(\d+)\b/i);
+        if (explicit) {
+          await checkTakeability(route.course, `${explicit[1]}-${explicit[2].toLowerCase()}-${explicit[3]}`);
+          return;
+        }
+        const index = periods.indexOf(planningFromPeriod);
+        if (index < 0) {
+          setNotice("Choose a planning-from period below, then repeat the question.");
+          return;
+        }
+        const period = /\bnext\s+semester\b/i.test(value)
+          ? periods.slice(index + 1).find((candidate) => candidate.includes("semester"))
+          : /\bnext\s+(?:term|period)\b/i.test(value)
+            ? periods[index + 1] : planningFromPeriod;
+        if (!period) {
+          setNotice("There is no following period in this plan. Add a study period first.");
+          return;
+        }
+        await checkTakeability(route.course, period);
+        return;
+      }
       if (route.intent === "PREREQUISITE_PATH" && route.course) {
         await generate(route.course);
         return;
@@ -405,13 +367,14 @@ export default function App() {
         return;
       }
       setTab("courses");
-      const response = await api<{ results: SearchResult[]; mode: string }>(
+      const response = await api<{ results: SearchResult[]; mode: string; coverage: { indexed_courses: number; catalogue_courses: number } }>(
         "/search",
-        { query: value, year: plan.year, compatible_first: compatible },
+        { query: value, year: plan.year, degree: plan.degree, option: plan.option, compatible_first: compatible },
       );
       if (sequence === searchSequence.current) {
         setResults(response.results);
         setMode(response.mode);
+        setCoverage(response.coverage);
       }
     } catch (e) {
       setError((e as Error).message);
@@ -723,7 +686,7 @@ export default function App() {
                         (a) => a.term === term,
                       );
                       const units = items.reduce(
-                        (n, a) => n + (courseMap.get(a.course)?.units ?? 0),
+                        (n, a) => n + (versionMap.get(`${a.term.slice(0, 4)}:${a.course}`)?.units ?? 0),
                         0,
                       );
                       const known = catalogue.courses.some((c) =>
@@ -759,7 +722,8 @@ export default function App() {
                           )}
                           <div className="period-courses">
                             {items.map((a) => {
-                              const c = courseMap.get(a.course);
+                              const c = versionMap.get(`${a.term.slice(0, 4)}:${a.course}`);
+                              const display = c ?? courseMap.get(a.course);
                               const check = checks.get(a.id);
                               return (
                                 <article
@@ -771,7 +735,7 @@ export default function App() {
                                   }
                                 >
                                   <div className="card-code">
-                                    <button onClick={() => c && setSelected(c)}>
+                                    <button onClick={() => display && setSelected(display)}>
                                       {a.course}
                                     </button>
                                     <span>{c?.units ?? "?"} units</span>
@@ -793,22 +757,26 @@ export default function App() {
                                   </div>
                                   <button
                                     className="card-title"
-                                    onClick={() => c && setSelected(c)}
+                                    onClick={() => display && setSelected(display)}
                                   >
-                                    {c?.title ?? "Course absent from catalogue"}
+                                    {display?.title ?? "Course absent from catalogue"}
                                   </button>
                                   <div className="card-tags">
                                     <span>
-                                      {required.has(a.course)
-                                        ? "Required course"
-                                        : "Elective choice"}
+                                      {fitMap[a.course] === "REQUIRED"
+                                        ? "Required"
+                                        : fitMap[a.course] === "COUNTS_AS_ELECTIVE"
+                                          ? "Can count as university-wide elective"
+                                          : fitMap[a.course] === "OUTSIDE_KNOWN_RULES"
+                                            ? "Outside known degree requirements"
+                                            : "Fit unknown"}
                                     </span>
                                     {check && <Badge status={check.status} />}
                                   </div>
                                   {check && check.status !== "SATISFIED" && (
                                     <button
                                       className="diagnostic-link"
-                                      onClick={() => c && setSelected(c)}
+                                      onClick={() => display && setSelected(display)}
                                     >
                                       {check.reasons[0]?.message}{" "}
                                       <ChevronRight size={12} />
@@ -956,153 +924,15 @@ export default function App() {
                 </>
               )}
               {tab === "courses" && (
-                <>
-                  <div className="section-title">
-                    <div>
-                      <h2>Follow your curiosity</h2>
-                      <p>Find courses by what you want to learn.</p>
-                    </div>
-                    <BookOpen className="section-icon" />
-                  </div>
-                  <form
-                    className="course-search"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      void doSearch();
-                    }}
-                  >
-                    <Search size={18} />
-                    <input
-                      aria-label="Course interest"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Try CAD, robotics, 3D modelling…"
-                    />
-                    <button className="button primary" disabled={searching}>
-                      Search
-                    </button>
-                  </form>
-                  <div className="suggestions">
-                    Try{" "}
-                    {["CAD", "3D modelling", "machine learning", "design"].map(
-                      (q) => (
-                        <button
-                          key={q}
-                          onClick={() => {
-                            setQuery(q);
-                            void doSearch(q);
-                          }}
-                        >
-                          {q}
-                        </button>
-                      ),
-                    )}
-                  </div>
-                  <div className="results-toolbar">
-                    <span>
-                      {results
-                        ? `${results.length} matches · ${mode === "HYBRID" ? "semantic + keyword search" : "keyword search"}`
-                        : `${courses.length} catalogue courses`}
-                    </span>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={compatible}
-                        onChange={(e) => {
-                          setCompatible(e.target.checked);
-                          setResults(null);
-                        }}
-                      />
-                      Degree-compatible first
-                    </label>
-                  </div>
-                  {searching ? (
-                    <div className="panel">
-                      <LoaderCircle className="spin" size={18} /> Finding
-                      evidence…
-                    </div>
-                  ) : (
-                    (
-                      results ??
-                      courses.map((c) => ({
-                        course: c,
-                        degree_fit: required.has(c.code)
-                          ? "REQUIRED"
-                          : c.elective
-                            ? "ELECTIVE_CANDIDATE"
-                            : "UNKNOWN",
-                        evidence: [],
-                        score: 0,
-                      }))
-                    ).map((result) => (
-                      <article
-                        className="search-card panel"
-                        key={result.course.code}
-                      >
-                        <div className="flex-between">
-                          <code>{result.course.code}</code>
-                          <span className="muted">
-                            {result.course.units ?? "?"} units
-                          </span>
-                        </div>
-                        <button
-                          className="search-card-title"
-                          onClick={() => setSelected(result.course)}
-                        >
-                          {result.course.title}
-                          <ArrowUpRight size={17} />
-                        </button>
-                        <div className="search-tags">
-                          <span>
-                            {result.degree_fit === "ELECTIVE_CANDIDATE"
-                              ? "Potential university-wide elective"
-                              : result.degree_fit === "REQUIRED"
-                                ? "In this degree"
-                                : result.degree_fit === "OUTSIDE_DEGREE"
-                                  ? "Outside degree elective rules"
-                                  : "Degree fit needs review"}
-                          </span>
-                          <span>
-                            {result.course.exam === "NO_LISTED_EXAM"
-                              ? "No listed exam"
-                              : result.course.exam === "EXAM"
-                                ? "Exam listed"
-                                : "Assessment unknown"}
-                          </span>
-                        </div>
-                        {result.evidence.length ? (
-                          result.evidence.slice(0, 2).map((e, i) => (
-                            <blockquote key={i}>
-                              <small>{e.field.replaceAll("_", " ")}</small>
-                              {e.text}
-                            </blockquote>
-                          ))
-                        ) : (
-                          <p className="course-excerpt">
-                            {result.course.overview ||
-                              "This course needs a verified catalogue source."}
-                          </p>
-                        )}
-                        <div className="search-card-footer">
-                          <SourceLink source={result.course.source} />
-                          <button
-                            className="button secondary"
-                            onClick={() => addCourse(result.course)}
-                          >
-                            <Plus size={14} />
-                            Add to plan
-                          </button>
-                        </div>
-                      </article>
-                    ))
-                  )}
-                  {results?.length === 0 && (
-                    <div className="panel empty-state">
-                      No matching evidence in this catalogue. Try a broader
-                      interest.
-                    </div>
-                  )}
-                </>
+                <CourseSearchView
+                  query={query} onQueryChange={setQuery} onSearch={doSearch}
+                  searching={searching} results={results} courses={courses}
+                  mode={mode} coverage={coverage} compatible={compatible}
+                  onCompatibleChange={(next) => { setCompatible(next); setResults(null); }}
+                  periods={periods} planningFromPeriod={planningFromPeriod}
+                  onPlanningFromChange={setPlanningFromPeriod} fitMap={fitMap}
+                  onSelect={setSelected} onAdd={addCourse}
+                />
               )}
               {tab === "degree" && (
                 <>
@@ -1111,13 +941,9 @@ export default function App() {
                       <h2>Meet your degree</h2>
                       <p>Computer science, with a path of your own.</p>
                     </div>
-                    <Badge
-                      status={
-                        degree.verification === "VERIFIED"
-                          ? "SATISFIED"
-                          : "UNKNOWN"
-                      }
-                    />
+                    <SourceStatusBadge status={degree.source_status ?? "SOURCE_UNVERIFIED"} />
+                    <ParseStatusBadge status={degree.parse_status ?? "UNPARSED"} />
+                    {degree.verification !== "VERIFIED" && <span className="badge unknown">Programme coverage partial</span>}
                   </div>
                   <section className="panel">
                     <h3>Degree structure</h3>
@@ -1431,11 +1257,12 @@ export default function App() {
                     }
                   >
                     <option value="earliest">Earliest completion</option>
-                    <option value="avoid_exams_early">Avoid exams early</option>
-                    <option value="prefer_no_exam">Fewer listed exams</option>
-                    <option value="balanced">Balanced exam load</option>
+                    <option value="avoid_exams_early">Prefer courses with no listed exam earlier</option>
+                    <option value="prefer_no_exam">Prefer courses with no listed exam</option>
+                    <option value="balanced">Balance courses with listed exams across periods</option>
                   </select>
                 </label>
+                <p className="muted">Unknown assessment data is kept separate and receives a conservative planning penalty.</p>
                 <button
                   className="button primary full-width"
                   disabled={busy}
@@ -1459,11 +1286,11 @@ export default function App() {
                 </p>
                 <button
                   onClick={() => {
-                    setQuery("CAD");
-                    void doSearch("CAD");
+                    setQuery("machine learning");
+                    void doSearch("machine learning");
                   }}
                 >
-                  Explore CAD courses <ArrowUpRight size={14} />
+                  Explore machine learning courses <ArrowUpRight size={14} />
                 </button>
               </section>
               <div className="right-footnote">
@@ -1514,11 +1341,8 @@ export default function App() {
           <div className="search-tags">
             <span>{selected.units ?? "?"} units</span>
             <span>{selected.exam.replaceAll("_", " ").toLowerCase()}</span>
-            <Badge
-              status={
-                selected.verification === "VERIFIED" ? "SATISFIED" : "UNKNOWN"
-              }
-            />
+            <SourceStatusBadge status={selected.source_status ?? "SOURCE_UNVERIFIED"} />
+            <ParseStatusBadge status={selected.parse_status ?? "UNPARSED"} />
           </div>
           <p>{selected.overview}</p>
           {selected.warnings.map((w, i) => (
@@ -1616,6 +1440,11 @@ export default function App() {
               </ul>
             </details>
           ) : null}
+          {solution.blockers?.length ? (
+            <div><strong>Possible blockers</strong><ul>{solution.blockers.map((blocker) => (
+              <li key={blocker}>{blocker.replaceAll("_", " ").toLowerCase()}</li>
+            ))}</ul></div>
+          ) : null}
           {solution.horizon && (
             <p className="muted">
               Verified horizon:{" "}
@@ -1634,6 +1463,24 @@ export default function App() {
             >
               Replace planned courses with this sequence
             </button>
+          )}
+        </Dialog>
+      )}
+      {takeability && (
+        <Dialog title={`Can I take ${takeability.target}?`} close={() => setTakeability(null)}>
+          <Badge status={takeability.status} />
+          <p>Checked for {termLabel(takeability.period)} using this plan and the published course version.</p>
+          {takeability.reasons.length ? (
+            <ul>{takeability.reasons.map((reason, index) => (
+              <li key={index}><strong>{reason.kind.replaceAll("_", " ")}:</strong> {reason.message}</li>
+            ))}</ul>
+          ) : <p>No blocking requisite or offering issue was found.</p>}
+          {takeability.status === "BLOCKED" && (
+            <button className="button secondary" onClick={() => {
+              const target = takeability.target;
+              setTakeability(null);
+              void generate(target);
+            }}>Find fastest verified path</button>
           )}
         </Dialog>
       )}

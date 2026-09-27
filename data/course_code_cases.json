@@ -1,0 +1,4 @@
+{
+  "valid": ["COMP1002", "COMP3045", "STATX100", "MATHX104", "MATHX203", "ARTIX300", "COMP4901"],
+  "invalid": ["COMP", "1002", "COMP-1002", "COMP10020", "<script>"]
+}

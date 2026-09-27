@@ -2,9 +2,11 @@ import argparse
 import json
 from pathlib import Path
 
+from sqlalchemy import distinct, func, select
 from sqlalchemy.orm import Session
 
-from slop.db import apply_overrides, catalogue, engine, import_catalogue
+from slop.db import Evidence, apply_overrides, catalogue, engine, import_catalogue
+from slop.search import MODEL
 
 
 def main():
@@ -43,21 +45,31 @@ def main():
     elif args.command == "quality":
         with Session(engine) as session:
             data = catalogue(session)
-        for year in sorted({d["year"] for d in data["degrees"]}):
-            cs = [c for c in data["courses"] if c["year"] == year]
-            print(
-                json.dumps(
-                    {
-                        "year": year,
-                        "courses": len(cs),
-                        "with_offerings": sum(bool(c["offerings"]) for c in cs),
-                        "unverified_versions": sum(c["verification"] != "VERIFIED" for c in cs),
-                        "unparsed_rules": sum(
-                            r["type"] == "UNKNOWN" for c in cs for r in c["rules"].values()
-                        ),
-                    }
-                )
-            )
+            for year in sorted({d["year"] for d in data["degrees"]}):
+                cs = [c for c in data["courses"] if c["year"] == year]
+                degrees = [d for d in data["degrees"] if d["year"] == year]
+                indexed = session.scalar(select(func.count(distinct(Evidence.version_id))).where(
+                    Evidence.version_id.like(f"{year}:%"), Evidence.vector.is_not(None),
+                    Evidence.model == MODEL)) or 0
+                print(json.dumps({
+                    "year": year,
+                    "courses": len(cs),
+                    "with_offerings": sum(bool(c["offerings"]) for c in cs),
+                    "offering_coverage": round(sum(bool(c["offerings"]) for c in cs) / len(cs), 3) if cs else 0,
+                    "unverified_versions": sum(c["verification"] != "VERIFIED" for c in cs),
+                    "source_year_mismatches": sum(c.get("year_status") == "MISMATCH" for c in cs)
+                        + sum(d.get("year_status") == "MISMATCH" for d in degrees),
+                    "missing_course_levels": sum(c.get("level") is None for c in cs),
+                    "unparsed_requisites": {kind: sum(
+                        c["rules"][kind]["type"] == "UNKNOWN" for c in cs)
+                        for kind in ("prerequisite", "corequisite", "antirequisite")},
+                    "unresolved_degree_groups": sum(g["rule"]["type"] == "UNKNOWN"
+                        for d in degrees for g in d["groups"])
+                        + sum(g["rule"]["type"] == "UNKNOWN"
+                        for d in degrees for option in d["options"] for g in option["groups"]),
+                    "indexed_evidence_courses": indexed,
+                    "indexed_coverage": round(indexed / len(cs), 3) if cs else 0,
+                }))
     else:
         from slop.upstream import UpstreamCourse
 

@@ -1,5 +1,5 @@
 import pytest
-from slop.rules import Rule, compile_rule, evaluate
+from slop.rules import Rule, compile_requisite, compile_rule, evaluate
 
 
 @pytest.mark.parametrize(
@@ -60,3 +60,17 @@ def test_explicit_slash_lists_keep_all_vs_one():
     assert compile_rule("must have completed all of COMP1001/COMP1002").type == "ALL"
     assert compile_rule("must have completed 1 of COMP1001/COMP1002").type == "ANY"
     assert compile_rule("COMP1001/COMP1002").type == "UNKNOWN"
+
+
+def test_official_title_bearing_requisites_preserve_raw_and_logic():
+    raw = ("Must have completed all of COMP1002 Problem Solving and Programming/"
+           "MATH1022 Maths for Machine Learning/STATX100 Probability and Statistics")
+    rule = compile_requisite("prerequisite", raw)
+    assert rule.type == "ALL" and rule.raw == raw
+    assert [child.course for child in rule.children] == ["COMP1002", "MATH1022", "STATX100"]
+    anti = compile_requisite("antirequisite", "Must not have completed ARTI2001 Machine Learning")
+    assert anti.type == "COURSE" and anti.course == "ARTI2001"
+    assert compile_requisite("prerequisite", "Must have completed one of COMP1002 Problem Solving/COMP1003 Structured Data").type == "ANY"
+    ambiguous = ("Must have completed Must have completed ARTI6003 OR COMP6035 Machine "
+                 "Learning Algorithms AND ARTI2001 OR COMP2052 Machine Learning")
+    assert compile_requisite("prerequisite", ambiguous).type == "UNKNOWN"

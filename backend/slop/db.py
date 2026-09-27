@@ -6,7 +6,16 @@ import os
 from pathlib import Path
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import JSON, ForeignKey, Integer, String, UniqueConstraint, create_engine, select
+from sqlalchemy import (
+    JSON,
+    ForeignKey,
+    Integer,
+    String,
+    UniqueConstraint,
+    create_engine,
+    delete,
+    select,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column
 
@@ -52,10 +61,19 @@ class CourseVersion(Base):
     data: Mapped[dict] = mapped_column(Json)
 
 
+class DegreeIdentity(Base):
+    __tablename__ = "degree_identity"
+    id: Mapped[str] = mapped_column(String(80), primary_key=True)
+    program_code: Mapped[str] = mapped_column(String(80))
+    canonical_slug: Mapped[str] = mapped_column(String(160))
+
+
 class DegreeVersion(Base):
     __tablename__ = "degree_version"
+    __table_args__ = (UniqueConstraint("degree_id", "year"),)
     id: Mapped[str] = mapped_column(String(40), primary_key=True)
-    year: Mapped[int] = mapped_column(Integer, unique=True)
+    degree_id: Mapped[str] = mapped_column(ForeignKey("degree_identity.id"))
+    year: Mapped[int] = mapped_column(Integer, index=True)
     source_id: Mapped[str] = mapped_column(ForeignKey("source_document.id"))
     data: Mapped[dict] = mapped_column(Json)
 
@@ -103,17 +121,33 @@ def import_catalogue(payload, session: Session):
         sid = digest(source)
         session.merge(Source(id=sid, year=data["year"], provenance=source))
     session.flush()
+    for d in payload["degrees"]:
+        session.merge(DegreeIdentity(
+            id=d["id"], program_code=d.get("program_code", d["id"].upper()),
+            canonical_slug=d["id"]
+        ))
     for c in payload["courses"]:
         for rule in c["rules"].values():
             Rule.model_validate(rule)
         session.merge(CourseIdentity(code=c["code"], institutional_id=c["identity"]))
     session.flush()
+    published_years = {d["year"] for d in payload["degrees"]}
+    incoming_versions = {f"{c['year']}:{c['code']}" for c in payload["courses"]}
+    incoming_degrees = {f"{d['year']}:{d['id']}" for d in payload["degrees"]}
+    stale_versions = [v.id for v in session.scalars(select(CourseVersion))
+                      if v.year in published_years and v.id not in incoming_versions]
+    if stale_versions:
+        session.execute(delete(Evidence).where(Evidence.version_id.in_(stale_versions)))
+        session.execute(delete(Offering).where(Offering.version_id.in_(stale_versions)))
+        session.execute(delete(CourseVersion).where(CourseVersion.id.in_(stale_versions)))
+    stale_degrees = [d.id for d in session.scalars(select(DegreeVersion))
+                     if d.year in published_years and d.id not in incoming_degrees]
+    if stale_degrees:
+        session.execute(delete(DegreeVersion).where(DegreeVersion.id.in_(stale_degrees)))
     for c in payload["courses"]:
         vid = f"{c['year']}:{c['code']}"
         old = session.get(CourseVersion, vid)
         if old and old.data != c:
-            from sqlalchemy import delete
-
             session.execute(delete(Evidence).where(Evidence.version_id == vid))
         session.merge(
             CourseVersion(
@@ -123,7 +157,8 @@ def import_catalogue(payload, session: Session):
     for d in payload["degrees"]:
         session.merge(
             DegreeVersion(
-                id=f"{d['year']}:{d['id']}", year=d["year"], source_id=digest(d["source"]), data=d
+                id=f"{d['year']}:{d['id']}", degree_id=d["id"], year=d["year"],
+                source_id=digest(d["source"]), data=d
             )
         )
     session.flush()
@@ -134,7 +169,6 @@ def import_catalogue(payload, session: Session):
         session.flush()
         for o in c["offerings"]:
             session.add(Offering(id=f"{vid}:{o['key']}", version_id=vid, period=o["key"], data=o))
-    published_years = {d["year"] for d in payload["degrees"]}
     for old in session.scalars(select(Relationship)):
         if old.data.get("year") in published_years:
             session.delete(old)

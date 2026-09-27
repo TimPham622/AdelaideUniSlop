@@ -1,0 +1,11 @@
+{
+  "requested_url": "https://adelaide.edu.au/study/courses/2027/comp-2052/",
+  "canonical_url": "https://adelaide.edu.au/study/courses/2027/comp-2052/",
+  "year": 2027,
+  "requested_year": 2027,
+  "status_code": 200,
+  "fetched_at": "2026-09-27T04:09:15.165031+00:00",
+  "sha256": "8ff78bcbe7a279dd8e364eaf5b117d4bec9a1e49017af1efd87aba390a040133",
+  "parser_version": "adelaide-1.0.0",
+  "fixture": "Extracted public heading/field/requisite fragments from the referenced page; sha256 identifies the full fetched HTML"
+}

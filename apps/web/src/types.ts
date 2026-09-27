@@ -1,8 +1,9 @@
 import { z } from "zod";
+import { courseCodePattern } from "./courseCode";
 export const AttemptSchema = z
   .object({
     id: z.string().min(1).max(100),
-    course: z.string().regex(/^[A-Z]{3,8}\d{4}[A-Z]?$/),
+    course: z.string().regex(courseCodePattern),
     term: z
       .string()
       .regex(/^\d{4}-[a-z0-9-]+$/)
@@ -22,7 +23,7 @@ const CreditSchema = z
   .object({
     id: z.string().min(1).max(100),
     kind: z.enum(["PROVISIONAL_CREDIT", "WAIVER"]),
-    course: z.string().regex(/^[A-Z]{3,8}\d{4}[A-Z]?$/),
+    course: z.string().regex(courseCodePattern),
     note: z.string().max(1000),
   })
   .strict();
@@ -62,6 +63,11 @@ export type Source = {
   sha256: string;
   parser_version: string;
 };
+export type SourceStatus =
+  | "SOURCE_VERIFIED"
+  | "SOURCE_UNVERIFIED"
+  | "SOURCE_YEAR_MISMATCH"
+  | "SOURCE_MISSING";
 export type Rule = {
   type: string;
   course?: string;
@@ -77,7 +83,8 @@ export type Course = {
   year: number;
   title: string;
   units: number | null;
-  level: number;
+  level: number | null;
+  level_source?: string;
   overview: string;
   outcomes: string[];
   assessments: string[];
@@ -88,6 +95,9 @@ export type Course = {
   rules: Record<string, Rule>;
   source: Source;
   verification: string;
+  source_status?: SourceStatus;
+  parse_status?: "PARSED" | "UNPARSED" | "OVERRIDDEN_REVIEWED";
+  year_status?: "MATCH" | "MISMATCH" | "UNKNOWN";
   warnings: string[];
 };
 export type Group = {
@@ -120,6 +130,9 @@ export type Degree = {
   standard_plan: Standard[];
   source: Source;
   verification: string;
+  source_status?: SourceStatus;
+  parse_status?: "PARSED" | "UNPARSED" | "OVERRIDDEN_REVIEWED";
+  year_status?: "MATCH" | "MISMATCH" | "UNKNOWN";
   course_references: Record<string, unknown>;
 };
 export type Catalogue = {
@@ -165,13 +178,21 @@ export type Solution = {
   attempts: Attempt[];
   optimal?: boolean;
   unknown_rules?: string[];
+  blockers?: string[];
   horizon?: string[];
 };
 export type SearchResult = {
   course: Course;
   score: number;
-  degree_fit: string;
+  requirement_fit: "REQUIRED" | "COUNTS_AS_ELECTIVE" | "OUTSIDE_KNOWN_RULES" | "UNKNOWN";
+  takeability: "TAKEABLE" | "BLOCKED" | "CONDITIONAL" | "UNKNOWN" | "NOT_EVALUATED";
   evidence: { field: string; text: string }[];
+};
+export type Takeability = {
+  status: "TAKEABLE" | "BLOCKED" | "CONDITIONAL" | "UNKNOWN";
+  target: string;
+  period: string;
+  reasons: { kind: string; status: string; message: string }[];
 };
 export const newPlan = (year: number): Plan => ({
   schema_version: 1,

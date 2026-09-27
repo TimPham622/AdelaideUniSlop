@@ -15,12 +15,13 @@ from urllib.robotparser import RobotFileParser
 import httpx
 from bs4 import BeautifulSoup
 
-from slop.rules import compile_rule, references
+from slop.course_codes import SOURCE_CODE_FRAGMENT, normalize_course_code
+from slop.rules import compile_requisite, references
 
-PARSER_VERSION = "adelaide-1.0.0"
+PARSER_VERSION = "adelaide-1.1.0"
 ORIGIN = "https://adelaide.edu.au"
 AGENT = "AdelaideUniSlopCatalogue/0.1 (public academic catalogue; 1 request/second)"
-CODE = r"[A-Z]{3,8}\s?\d{4}[A-Z]?"
+CODE = SOURCE_CODE_FRAGMENT
 
 
 def clean(el) -> str:
@@ -81,7 +82,7 @@ class Fetcher:
             json.loads(meta_file.read_text()) if meta_file.exists() and html_file.exists() else None
         )
         if old and time.time() - html_file.stat().st_mtime < self.ttl:
-            return html_file.read_text(), old
+            return html_file.read_text(), {**old, "parser_version": PARSER_VERSION}
         headers = {}
         if old:
             if old.get("etag"):
@@ -104,7 +105,7 @@ class Fetcher:
             break
         if r.status_code == 304 and old:
             html_file.touch()
-            return html_file.read_text(), old
+            return html_file.read_text(), {**old, "parser_version": PARSER_VERSION}
         if r.status_code != 404:
             r.raise_for_status()
         html = r.text
@@ -131,6 +132,15 @@ class Fetcher:
 
 def parse_degree(html, source):
     soup = BeautifulSoup(html, "html.parser")
+    requested_year = source["year"]
+    page_years = {
+        int(year)
+        for year in re.findall(r"/study/(?:courses|degrees)/(20\d{2})/", html)
+    }
+    page_year = next(iter(page_years)) if len(page_years) == 1 else None
+    year_status = (
+        "MATCH" if page_year == requested_year else "MISMATCH" if page_year else "UNKNOWN"
+    )
     groups, options, refs = [], [], {}
     summary = clean(soup.select_one(".cmp-course-info-by-year__description"))
     for panel in soup.select(".cmp-course-info-by-year__panel"):
@@ -141,7 +151,7 @@ def parse_degree(html, source):
         for row in panel.select("tbody tr"):
             values = [clean(c) for c in row.select(".table-content")]
             if len(values) >= 3 and re.fullmatch(CODE, values[1]):
-                code = values[1].replace(" ", "")
+                code = normalize_course_code(values[1])
                 codes.append(code)
                 refs[code] = {"code": code, "title": values[0], "units": int(values[2])}
         if key == "majors":
@@ -209,6 +219,9 @@ def parse_degree(html, source):
         "id": "bcomp",
         "title": clean(soup.find("h1")),
         "year": source["year"],
+        "requested_year": requested_year,
+        "page_year": page_year,
+        "year_status": year_status,
         "program_code": "BCOMP",
         "total_units": int(total_match[1]) if total_match else None,
         "overview": clean(overview),
@@ -219,8 +232,13 @@ def parse_degree(html, source):
         "course_references": refs,
         "standard_plan": plan,
         "source": source,
+        "source_status": (
+            "SOURCE_VERIFIED" if year_status == "MATCH" else
+            "SOURCE_YEAR_MISMATCH" if year_status == "MISMATCH" else "SOURCE_UNVERIFIED"
+        ),
+        "parse_status": "PARSED" if recognized and all(g["verification"] == "VERIFIED" for g in groups) else "UNPARSED",
         "verification": "VERIFIED"
-        if recognized and all(g["verification"] == "VERIFIED" for g in groups)
+        if year_status == "MATCH" and recognized and all(g["verification"] == "VERIFIED" for g in groups)
         else "PARTIAL",
         "double_counting": "UNKNOWN",
     }
@@ -300,18 +318,22 @@ def parse_course(html, source, code):
     if not title or "not found" in title.lower():
         raise ValueError("Missing course page")
     units = value("Unit value")
+    level_text = value("Course level")
+    level_match = re.fullmatch(r"(?:Level\s*)?(\d+)", level_text or "", re.IGNORECASE)
     year_evidence = re.search(r"(?:Undergraduate|Postgraduate)\s*\|\s*(\d{4})", clean(main))
     year_matches = bool(year_evidence and int(year_evidence[1]) == source["year"])
     if not year_matches:
         offerings = []
     notices = [clean(el) for el in soup.select(".cmp-alert-body-message-content") if clean(el)]
+    compiled = {k: compile_requisite(k, v).model_dump() for k, v in requisites.items()}
     return {
         "code": code,
         "year": source["year"],
         "identity": value("Course ID") or code,
         "title": title,
         "units": int(units) if units and units.isdigit() else None,
-        "level": int(code[-4]) if code[-4].isdigit() else None,
+        "level": int(level_match[1]) if level_match else None,
+        "level_source": "OFFICIAL_FIELD" if level_match else "UNKNOWN",
         "campus": value("Campus"),
         "overview": content("Course overview") or "",
         "outcomes": outcomes,
@@ -326,12 +348,18 @@ def parse_course(html, source, code):
         "elective": {"Yes": True, "No": False}.get(value("University-wide elective course")),
         "offerings": offerings,
         "raw": requisites,
-        "rules": {k: compile_rule(v).model_dump() for k, v in requisites.items()},
+        "rules": compiled,
         "source": source,
+        "source_status": "SOURCE_VERIFIED" if year_matches and not notices else
+            "SOURCE_YEAR_MISMATCH" if year_evidence and not year_matches else "SOURCE_UNVERIFIED",
+        "parse_status": "PARSED" if all(r["type"] != "UNKNOWN" for r in compiled.values()) else "UNPARSED",
         "verification": "VERIFIED" if year_matches and not notices else "UNKNOWN",
         "source_notices": notices,
         "warnings": ([] if year_matches else ["Requested catalogue year not confirmed by page"])
         + notices,
+        "requested_year": source["year"],
+        "page_year": int(year_evidence[1]) if year_evidence else None,
+        "year_status": "MATCH" if year_matches else "MISMATCH" if year_evidence else "UNKNOWN",
     }
 
 
@@ -345,7 +373,6 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
         degrees.append(degree)
         queue = dict(degree["course_references"])
         queue.update({c["course"]: {} for c in degree["standard_plan"]})
-        queue.update({c: {} for c in ["ENGM4015", "ENGM3009", "ARCH2007", "ARCH1002"]})
         for option in degree["options"]:
             path = urlparse(option["source_url"]).path
             path = re.sub(r"/study/degrees/(?:\d{4}/)?", f"/study/degrees/{year}/", path)
@@ -356,11 +383,17 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
             option["summary_verified"] = parsed["summary_verified"]
             option["source"] = option_source
             option["verification"] = parsed["verification"]
+            option["source_status"] = parsed["source_status"]
+            option["parse_status"] = parsed["parse_status"]
+            option["requested_year"] = parsed["requested_year"]
+            option["page_year"] = parsed["page_year"]
+            option["year_status"] = parsed["year_status"]
             option["standard_plan"] = parsed["standard_plan"]
             queue.update(parsed["course_references"])
         seen = set()
         while queue:
-            code, ref = queue.popitem()
+            code = min(queue)
+            ref = queue.pop(code)
             if code in seen:
                 continue
             seen.add(code)
@@ -373,9 +406,9 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
                 for rule in course["rules"].values():
                     from slop.rules import Rule
 
-                    for dependency in references(Rule.model_validate(rule)) | set(
+                    for dependency in sorted(references(Rule.model_validate(rule)) | set(
                         re.findall(CODE, rule.get("raw", ""))
-                    ):
+                    )):
                         queue.setdefault(dependency.replace(" ", ""), {})
                 courses.append(course)
                 print(
@@ -392,7 +425,8 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
                         "identity": code,
                         "title": ref.get("title", code),
                         "units": ref.get("units"),
-                        "level": int(code[-4]) if code[-4].isdigit() else None,
+                        "level": None,
+                        "level_source": "UNKNOWN",
                         "overview": "",
                         "outcomes": [],
                         "assessments": [],
@@ -401,7 +435,7 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
                         "offerings": [],
                         "raw": {},
                         "rules": {
-                            k: compile_rule(None).model_dump()
+                            k: compile_requisite(k, None).model_dump()
                             for k in ["prerequisite", "corequisite", "antirequisite"]
                         },
                         "source": source
@@ -414,6 +448,8 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
                             "parser_version": PARSER_VERSION,
                         },
                         "verification": "UNKNOWN",
+                        "source_status": "SOURCE_MISSING",
+                        "parse_status": "UNPARSED",
                         "warnings": ["Official year-specific course page unavailable"],
                     }
                 )
@@ -432,9 +468,12 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
                     normalized,
                     flags=re.IGNORECASE,
                 )
-            rule = compile_rule(normalized)
+            rule = compile_requisite(kind, normalized)
             rule.raw = raw
             course["rules"][kind] = rule.model_dump()
+        course["parse_status"] = "PARSED" if all(
+            r["type"] != "UNKNOWN" for r in course["rules"].values()
+        ) else "UNPARSED"
     for degree in degrees:
         required = set(degree["course_references"])
         relevant = [c for c in courses if c["year"] == degree["year"] and c["code"] in required]
@@ -446,6 +485,7 @@ def ingest(years=(2026, 2027), output=Path("data/fixtures/catalogue.json")):
             degree["verification"] = "PARTIAL"
     payload = {"schema_version": 1, "degrees": degrees, "courses": courses, "relationships": []}
     output = Path(output)
+    courses.sort(key=lambda course: (course["year"], course["code"]))
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, indent=2))
     fetcher.prune()

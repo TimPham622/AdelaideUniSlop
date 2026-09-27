@@ -61,13 +61,13 @@ test("year and major browsing preserve separate plans and expose source uncertai
   await expect(page.getByLabel("Status for COMP1002")).toBeVisible();
 });
 
-test("interest search shows evidence and adds a course, with honest path results", async ({
+test("corpus search shows X-series evidence and honest path results", async ({
   page,
 }) => {
   await page.goto("/");
   await page
     .getByLabel("Search degrees, courses or ask a question")
-    .fill("CAD");
+    .fill("STATX100");
   await page
     .getByRole("button", { name: "Search", exact: true })
     .first()
@@ -77,17 +77,51 @@ test("interest search shows evidence and adds a course, with honest path results
   });
   const course = page
     .locator(".search-card")
-    .filter({ hasText: "Computer-Aided Engineering and Design Project" })
+    .filter({ hasText: "Probability and Statistics" })
     .first();
   await expect(course.locator("blockquote").first()).toBeVisible();
   await course.getByRole("button", { name: "Add to plan" }).click();
   await course.locator(".search-card-title").click();
   await expect(page.getByRole("dialog")).toContainText("Requisites");
+  await expect(page.getByRole("dialog")).toContainText("Source needs review");
   await page.getByRole("button", { name: "Fastest prerequisite path" }).click();
   const result = page.getByRole("dialog").last();
   await expect(result).toContainText("Planning result");
   await expect(result).not.toContainText(
     "Replace planned courses with this sequence",
+  );
+});
+
+test("major changes fit and can-take uses a selected period", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Explore courses", exact: true }).click();
+  await page.getByLabel("Course interest").fill("STATX100");
+  await page.locator(".course-search button").click();
+  await expect(page.locator(".search-card").filter({ hasText: "STATX100" })).toContainText(
+    "Can count as university-wide elective",
+  );
+  await page.getByRole("button", { name: "Study planner", exact: true }).click();
+  await page.getByLabel("Study pathway").selectOption({ label: "Artificial Intelligence and Machine Learning" });
+  await page.getByRole("button", { name: "Explore courses", exact: true }).click();
+  await page.getByLabel("Course interest").fill("STATX100");
+  await page.locator(".course-search button").click();
+  await expect(page.locator(".search-card").filter({ hasText: "STATX100" })).toContainText("Required");
+
+  await page.getByLabel("Planning from period").selectOption("2026-semester-1");
+  await page.getByLabel("Search degrees, courses or ask a question").fill(
+    "Can I take COMP1002 next semester?",
+  );
+  await page.getByRole("button", { name: "Search", exact: true }).first().click();
+  await expect(page.getByRole("dialog")).toContainText("Can I take COMP1002?");
+  await expect(page.getByRole("dialog")).toContainText("Semester 2 · 2026");
+  await expect(page.getByRole("dialog")).toContainText("Takeable");
+  await page.getByLabel("Close dialog").click();
+  await page.getByLabel("Catalogue year").selectOption("2027");
+  await page.getByRole("button", { name: "Explore courses", exact: true }).click();
+  await page.getByLabel("Course interest").fill("STATX100");
+  await page.locator(".course-search button").click();
+  await expect(page.locator(".search-card").filter({ hasText: "STATX100" })).toContainText(
+    "Outside known degree requirements",
   );
 });
 

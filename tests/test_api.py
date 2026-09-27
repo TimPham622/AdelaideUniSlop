@@ -25,13 +25,37 @@ def test_api_validation_path_search_and_router(client):
         == "COMP1001"
     )
     for q, intent in [
-        ("can I take COMP1001", "PREREQUISITE_PATH"),
+        ("can I take COMP1001", "CAN_TAKE"),
+        ("fastest path to COMP1001", "PREREQUISITE_PATH"),
         ("build my degree plan", "PLAN_GENERATE"),
         ("check my plan", "PLAN_VALIDATE"),
         ("computer science degree", "DEGREE_SEARCH"),
         ("CAD", "COURSE_SEARCH"),
     ]:
         assert client.post("/api/route", json={"query": q, "year": 2026}).json()["intent"] == intent
+
+
+def test_period_takeability_and_requirement_fit_are_separate(client):
+    response = client.post("/api/plan/can-take", json={
+        "plan": {"year": 2026}, "target": "COMP1002", "period": "2026-semester-2"
+    })
+    assert response.status_code == 200
+    assert response.json()["status"] == "BLOCKED"
+    assert any(reason["kind"] == "prerequisite" for reason in response.json()["reasons"])
+    result = client.post("/api/search", json={"query": "COMP1002", "year": 2026}).json()["results"][0]
+    assert result["requirement_fit"] == "REQUIRED"
+    assert result["takeability"] == "NOT_EVALUATED"
+
+
+def test_exact_course_code_is_not_hidden_by_fit_first_limit(client, small_catalogue):
+    course = next(c for c in small_catalogue["courses"]
+                  if c["year"] == 2026 and c["code"] == "COMP2002")
+    course["elective"] = False
+    result = client.post("/api/search", json={
+        "query": "COMP2002", "year": 2026, "compatible_first": True, "limit": 1
+    }).json()["results"][0]
+    assert result["course"]["code"] == "COMP2002"
+    assert result["requirement_fit"] == "OUTSIDE_KNOWN_RULES"
 
 
 def test_strict_input_rejection(client):

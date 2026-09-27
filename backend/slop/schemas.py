@@ -4,6 +4,10 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from slop.course_codes import CODE_FRAGMENT
+
+CODE_REGEX = rf"^{CODE_FRAGMENT}$"
+
 
 class Strict(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -11,7 +15,7 @@ class Strict(BaseModel):
 
 class Attempt(Strict):
     id: str = Field(min_length=1, max_length=100)
-    course: str = Field(pattern=r"^[A-Z]{3,8}\d{4}[A-Z]?$", max_length=20)
+    course: str = Field(pattern=CODE_REGEX, max_length=20)
     term: str = Field(pattern=r"^\d{4}-[a-z0-9-]+$", max_length=80)
     status: Literal["PLANNED", "CURRENT", "COMPLETED", "FAILED", "WITHDRAWN", "CREDIT"] = "PLANNED"
     locked: bool = False
@@ -20,7 +24,7 @@ class Attempt(Strict):
 class Credit(Strict):
     id: str = Field(min_length=1, max_length=100)
     kind: Literal["PROVISIONAL_CREDIT", "WAIVER"]
-    course: str = Field(pattern=r"^[A-Z]{3,8}\d{4}[A-Z]?$")
+    course: str = Field(pattern=CODE_REGEX)
     note: str = Field(default="", max_length=1000)
 
 
@@ -48,12 +52,20 @@ class Plan(Strict):
 
 class PathRequest(Strict):
     plan: Plan
-    target: str = Field(pattern=r"^[A-Z]{3,8}\d{4}[A-Z]?$")
+    target: str = Field(pattern=CODE_REGEX)
     start: str | None = Field(default=None, pattern=r"^\d{4}-[a-z0-9-]+$")
 
 
 class SearchRequest(Strict):
     query: str = Field(min_length=1, max_length=400)
     year: int = Field(ge=2020, le=2100)
+    degree: str = Field(default="bcomp", max_length=80)
+    option: str = Field(default="general", max_length=150)
     compatible_first: bool = True
     limit: int = Field(default=20, ge=1, le=50)
+
+
+class CanTakeRequest(Strict):
+    plan: Plan
+    target: str = Field(pattern=CODE_REGEX)
+    period: str = Field(pattern=r"^\d{4}-[a-z0-9-]+$")

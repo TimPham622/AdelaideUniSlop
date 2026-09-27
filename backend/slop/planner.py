@@ -22,8 +22,8 @@ def term_order(key):
     return int(year), order, label
 
 
-def context(data, year):
-    degree = next((d for d in data["degrees"] if d["year"] == year), None)
+def context(data, year, degree_id="bcomp"):
+    degree = next((d for d in data["degrees"] if d["year"] == year and d["id"] == degree_id), None)
     if degree is None:
         raise ValueError("Catalogue year is not available")
     courses = {c["code"]: c for c in data["courses"] if c["year"] == year}
@@ -37,6 +37,63 @@ def degree_groups(degree, option):
     if chosen is None:
         raise ValueError("Unknown major for this catalogue year")
     return chosen["groups"]
+
+
+def requirement_fit(data, year, degree_id, option, code):
+    degree, courses = context(data, year, degree_id)
+    groups = degree_groups(degree, option)
+    if any(code in group["codes"] for group in groups):
+        return "REQUIRED"
+    course = courses.get(code)
+    if course is None:
+        return "UNKNOWN"
+    if any(group["rule"]["type"] == "UNKNOWN" for group in groups):
+        return "UNKNOWN"
+    elective_groups = [Rule.model_validate(group["rule"]) for group in groups
+                       if Rule.model_validate(group["rule"]).elective]
+    if elective_groups and course.get("elective") is True:
+        if course.get("units") is None or any(
+            rule.level is not None and course.get("level") is None for rule in elective_groups
+        ):
+            return "UNKNOWN"
+        if any((rule.codes is None or code in rule.codes)
+               and (rule.level is None or course["level"] == rule.level)
+               and (rule.type not in {"EXACT_UNITS", "MAX_UNITS"}
+                    or course["units"] <= rule.units)
+               for rule in elective_groups):
+            return "COUNTS_AS_ELECTIVE"
+    if course.get("elective") is None:
+        return "UNKNOWN"
+    return "OUTSIDE_KNOWN_RULES"
+
+
+def resolve_course_version(data, code, period):
+    return next(
+        (c for c in data["courses"] if c["code"] == code and c["year"] == int(period[:4])),
+        None,
+    )
+
+
+def can_take(plan: Plan, data, target: str, period: str):
+    version = resolve_course_version(data, target, period)
+    if version is None:
+        return {"status": "UNKNOWN", "target": target, "period": period,
+                "reasons": [{"kind": "course_version", "status": "UNKNOWN",
+                             "message": "No course version is published for this calendar year"}]}
+    if any(a.course == target and a.status in {"COMPLETED", "CREDIT"} for a in plan.attempts):
+        return {"status": "BLOCKED", "target": target, "period": period,
+                "reasons": [{"kind": "repeat", "status": "UNSATISFIED",
+                             "message": "Course already completed or credited"}]}
+    attempt = Attempt(id="can-take-evaluation", course=target, term=period, status="PLANNED")
+    candidate = plan.model_copy(update={"attempts": [a for a in plan.attempts
+        if not (a.course == target and a.term == period and a.status in {"PLANNED", "CURRENT"})]
+        + [attempt]})
+    report = validate(candidate, data)
+    check = next(row for row in report["course_checks"] if row["id"] == attempt.id)
+    status = {"SATISFIED": "TAKEABLE", "UNSATISFIED": "BLOCKED",
+              "CONDITIONAL": "CONDITIONAL", "UNKNOWN": "UNKNOWN"}[check["status"]]
+    return {"status": status, "target": target, "period": period,
+            "reasons": check["reasons"], "source": version.get("source")}
 
 
 def equivalents(completed, data, year):
@@ -59,9 +116,20 @@ def equivalents(completed, data, year):
 
 
 def validate(plan: Plan, data):
-    degree, courses = context(data, plan.year)
+    degree, program_courses = context(data, plan.year, plan.degree)
     groups = degree_groups(degree, plan.option)
     actual = {(c["year"], c["code"]): c for c in data["courses"]}
+    courses = dict(program_courses)
+    resolved = {}
+    unresolved_versions = set()
+    for attempt in sorted(plan.attempts, key=lambda a: term_order(a.term)):
+        version = actual.get((int(attempt.term[:4]), attempt.course))
+        if attempt.status not in {"FAILED", "WITHDRAWN"}:
+            if version:
+                resolved.setdefault(attempt.course, version)
+            if not version or version["verification"] != "VERIFIED":
+                unresolved_versions.add(attempt.course)
+    courses.update(resolved)
     assumed = {c.course for c in plan.credits if c.kind == "PROVISIONAL_CREDIT"}
     waivers = {c.course for c in plan.credits if c.kind == "WAIVER"}
     checks = []
@@ -70,7 +138,7 @@ def validate(plan: Plan, data):
     seen = set()
     loads = defaultdict(int)
     for attempt in sorted(plan.attempts, key=lambda a: (term_order(a.term), a.id)):
-        course = courses.get(attempt.course)
+        course = actual.get((int(attempt.term[:4]), attempt.course))
         row = {
             "id": attempt.id,
             "course": attempt.course,
@@ -85,6 +153,8 @@ def validate(plan: Plan, data):
         if not course:
             add("course", "UNKNOWN", {"message": "Course is absent from the selected catalogue"})
         elif attempt.status not in {"FAILED", "WITHDRAWN"}:
+            if course["verification"] != "VERIFIED":
+                add("source", "UNKNOWN", {"message": "Course version is not source verified"})
             if attempt.course in seen:
                 add(
                     "repeat",
@@ -93,7 +163,7 @@ def validate(plan: Plan, data):
                 )
             if attempt.status not in {"COMPLETED", "CREDIT"}:
                 loads[attempt.term] += course["units"] or 0
-                offered = actual.get((int(attempt.term[:4]), attempt.course))
+                offered = course
                 if not offered or not offered["offerings"]:
                     add(
                         "offering",
@@ -108,7 +178,7 @@ def validate(plan: Plan, data):
                         "UNSATISFIED",
                         {"message": "Course is not listed in this teaching period"},
                     )
-                rule_course = offered or course
+                rule_course = offered
                 if rule_course.get("source_notices"):
                     add(
                         "source_notice",
@@ -233,6 +303,9 @@ def validate(plan: Plan, data):
         relevant = projected - fixed_codes if rule.elective else projected
         earned_relevant = earned - fixed_codes if rule.elective else earned
         result = evaluate(rule, relevant, courses, equivalents(relevant, data, plan.year))
+        if result["status"] == "SATISFIED" and unresolved_versions & relevant:
+            result["status"] = "UNKNOWN"
+            result["message"] = "A counted course version is missing or unverified"
         if (
             rule.elective
             and result["status"] == "UNSATISFIED"
@@ -280,6 +353,9 @@ def validate(plan: Plan, data):
         }
     )
     total_check = degree_checks[-1]
+    if total_check["status"] == "SATISFIED" and unresolved_versions & projected:
+        total_check["status"] = "UNKNOWN"
+        total_check["message"] = "A counted course version is missing or unverified"
     if (
         total_check["status"] == "UNSATISFIED"
         and evaluate(total_rule, projected | assumed, courses)["status"] == "SATISFIED"
@@ -290,7 +366,7 @@ def validate(plan: Plan, data):
         if plan.option == "general"
         else next(o for o in degree["options"] if o["id"] == plan.option)
     )
-    if not chosen.get("summary_verified"):
+    if not chosen.get("summary_verified") or chosen.get("source_status", "SOURCE_VERIFIED") != "SOURCE_VERIFIED":
         degree_checks.append(
             {
                 "id": "summary",
@@ -313,8 +389,8 @@ def validate(plan: Plan, data):
         "status": overall,
         "course_checks": checks,
         "degree_checks": degree_checks,
-        "earned_units": sum(courses[c]["units"] or 0 for c in earned if c in courses),
-        "planned_units": sum(courses[c]["units"] or 0 for c in projected if c in courses),
+        "earned_units": sum(resolved[c]["units"] or 0 for c in earned if c in resolved),
+        "planned_units": sum(resolved[c]["units"] or 0 for c in projected if c in resolved),
         "conditional_assumptions": [c.model_dump() for c in plan.credits],
         "unknown_count": sum(c["status"] == "UNKNOWN" for c in checks + degree_checks),
     }
@@ -322,7 +398,9 @@ def validate(plan: Plan, data):
 
 def solve(plan: Plan, data, target=None, start=None):
     """CP-SAT schedules courses in observed periods. Unknowns cannot be solver shortcuts."""
-    degree, courses = context(data, plan.year)
+    degree, program_courses = context(data, plan.year, plan.degree)
+    courses = dict(program_courses)
+    courses.update({c["code"]: c for c in data["courses"] if c["year"] >= plan.year})
     groups = degree_groups(degree, plan.option)
     if target and target not in courses:
         return {"status": "UNKNOWN", "message": "Target is not in this catalogue", "attempts": []}
@@ -349,6 +427,7 @@ def solve(plan: Plan, data, target=None, start=None):
         return {
             "status": "UNKNOWN",
             "message": "No verified teaching periods are available for this horizon",
+            "blockers": ["MISSING_OFFERING_HORIZON"],
             "attempts": [],
         }
     model = cp_model.CpModel()
@@ -370,7 +449,8 @@ def solve(plan: Plan, data, target=None, start=None):
         model.add(expr <= 1)
     for t in range(len(periods)):
         model.add(
-            sum((courses[c]["units"] or 0) * v for (c, i), v in x.items() if i == t)
+            sum((versions[int(periods[i][:4]), c]["units"] or 0) * v
+                for (c, i), v in x.items() if i == t)
             <= plan.max_units
         )
     unknown = set()
@@ -426,12 +506,24 @@ def solve(plan: Plan, data, target=None, start=None):
                 c
                 for c in courses
                 if (rule.codes is None or c in rule.codes)
-                and (rule.level is None or courses[c]["level"] == rule.level)
-                and (not rule.elective or courses[c]["elective"] is True)
             ]
             units = sum(
-                (courses[c]["units"] or 0) * presence(c, boundary, inclusive, use_equivalents=False)
-                for c in eligible
+                (versions[int(periods[i][:4]), c]["units"] or 0) * v
+                for (c, i), v in x.items()
+                if c in eligible and (i <= boundary if inclusive else i < boundary)
+                and (rule.level is None or versions[int(periods[i][:4]), c]["level"] == rule.level)
+                and (not rule.elective or versions[int(periods[i][:4]), c]["elective"] is True)
+            )
+            units += sum(
+                (versions.get((int(a.term[:4]), a.course)) or courses.get(a.course, {})).get("units") or 0
+                for a in earned_attempts
+                if a.course in eligible and (boundary >= len(periods)
+                    or term_order(a.term) < term_order(periods[boundary])
+                    or (inclusive and a.term == periods[boundary]))
+                and (rule.level is None or
+                    (versions.get((int(a.term[:4]), a.course)) or courses.get(a.course, {})).get("level") == rule.level)
+                and (not rule.elective or
+                    (versions.get((int(a.term[:4]), a.course)) or courses.get(a.course, {})).get("elective") is True)
             )
             if rule.type == "MIN_UNITS":
                 model.add(units >= rule.units).only_enforce_if(b)
@@ -473,6 +565,7 @@ def solve(plan: Plan, data, target=None, start=None):
                 return {
                     "status": "UNKNOWN",
                     "message": f"Locked {a.course} has no verified offering in {a.term}",
+                    "blockers": ["LOCKED_COURSE_CONFLICT", "MISSING_OFFERING_HORIZON"],
                     "attempts": [],
                 }
             model.add(x[a.course, periods.index(a.term)] == 1)
@@ -488,6 +581,7 @@ def solve(plan: Plan, data, target=None, start=None):
             return {
                 "status": "UNKNOWN",
                 "message": "Program structure requires source review",
+                "blockers": ["UNRESOLVED_DEGREE_RULE"],
                 "attempts": [],
             }
         fixed = set().union(*(set(g["codes"]) for g in groups))
@@ -497,6 +591,7 @@ def solve(plan: Plan, data, target=None, start=None):
                 return {
                     "status": "UNKNOWN",
                     "message": f"Unresolved degree requirement: {g['title']}",
+                    "blockers": ["UNRESOLVED_DEGREE_RULE"],
                     "attempts": [],
                 }
             if rule.elective:
@@ -506,6 +601,7 @@ def solve(plan: Plan, data, target=None, start=None):
             return {
                 "status": "UNKNOWN",
                 "message": "Degree unit total is unresolved",
+                "blockers": ["UNRESOLVED_DEGREE_RULE"],
                 "attempts": [],
             }
         model.add(boolean(Rule(type="EXACT_UNITS", units=degree["total_units"]), len(periods)) == 1)
@@ -516,9 +612,10 @@ def solve(plan: Plan, data, target=None, start=None):
     objective = finish * 100000 + sum((t + 1) * 10 * v + v for (c, t), v in x.items())
     if not target and plan.preference in {"avoid_exams_early", "prefer_no_exam"}:
         objective += sum(
-            (1000 * (len(periods) - t) if plan.preference == "avoid_exams_early" else 10000) * v
+            (1000 * (len(periods) - t) if plan.preference == "avoid_exams_early" else 10000)
+            * (2 if versions[int(periods[t][:4]), c]["exam"] == "EXAM" else 1) * v
             for (c, t), v in x.items()
-            if courses[c]["exam"] != "NO_LISTED_EXAM"
+            if versions[int(periods[t][:4]), c]["exam"] != "NO_LISTED_EXAM"
         )
     elif not target and plan.preference == "balanced":
         peak = model.new_int_var(0, len(courses), "peak_exams")
@@ -528,20 +625,35 @@ def solve(plan: Plan, data, target=None, start=None):
                 >= sum(
                     v
                     for (c, i), v in x.items()
-                    if i == t and courses[c]["exam"] != "NO_LISTED_EXAM"
+                    if i == t and versions[int(periods[i][:4]), c]["exam"] == "EXAM"
                 )
             )
-        objective += peak * 1000
+        objective += peak * 1000 + sum(
+            200 * v for (c, i), v in x.items()
+            if versions[int(periods[i][:4]), c]["exam"] == "UNKNOWN"
+        )
     model.minimize(objective)
     solver = cp_model.CpSolver()
     solver.parameters.max_time_in_seconds = 8
     solver.parameters.num_search_workers = 1
     status = solver.solve(model)
     if status not in (cp_model.OPTIMAL, cp_model.FEASIBLE):
+        blockers = set()
+        if unknown:
+            blockers.add("UNPARSED_REQUISITE")
+        if target and not any(code == target for code, _ in x):
+            blockers.add("MISSING_OFFERING_HORIZON")
+        if any(c["verification"] != "VERIFIED" for c in data["courses"]
+               if c["code"] in courses and c["year"] >= plan.year):
+            blockers.add("UNVERIFIED_COURSE_VERSION")
+        if any((c["units"] or 0) > plan.max_units for c in data["courses"]
+               if c["code"] in courses and c["year"] >= plan.year):
+            blockers.add("LOAD_CONSTRAINT")
         return {
             "status": "UNKNOWN" if unknown else "INFEASIBLE",
             "message": "No verified solution within the published offering horizon. Missing offerings, unresolved rules, locked courses or the load limit may prevent a solution.",
             "unknown_rules": sorted(unknown),
+            "blockers": sorted(blockers),
             "horizon": periods,
             "attempts": [],
         }

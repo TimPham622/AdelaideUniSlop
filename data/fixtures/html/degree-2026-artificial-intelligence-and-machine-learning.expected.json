@@ -75,7 +75,7 @@
       "id": "major-courses",
       "title": "Major Courses",
       "raw": "Complete 54 units for ALL of the following:",
-      "units": null,
+      "units": 54,
       "codes": [
         "MATH1022",
         "ARTI2001",
@@ -83,14 +83,52 @@
         "ARTI3002",
         "COMP2007",
         "COMP3011",
-        "COMP3008"
+        "COMP3008",
+        "STATX100",
+        "ARTIX300"
       ],
       "rule": {
-        "type": "UNKNOWN",
-        "raw": "Complete 54 units for ALL of the following:",
-        "warning": "Degree group requires reviewed override"
+        "type": "ALL",
+        "children": [
+          {
+            "type": "COURSE",
+            "course": "MATH1022"
+          },
+          {
+            "type": "COURSE",
+            "course": "ARTI2001"
+          },
+          {
+            "type": "COURSE",
+            "course": "ARTI2003"
+          },
+          {
+            "type": "COURSE",
+            "course": "ARTI3002"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2007"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP3011"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP3008"
+          },
+          {
+            "type": "COURSE",
+            "course": "STATX100"
+          },
+          {
+            "type": "COURSE",
+            "course": "ARTIX300"
+          }
+        ]
       },
-      "verification": "UNKNOWN"
+      "verification": "VERIFIED"
     },
     {
       "id": "work-integrated-learning",

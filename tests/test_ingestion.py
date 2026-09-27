@@ -99,7 +99,38 @@ def test_major_requirement_goldens(expected_file):
     for field, value in expected.items():
         assert parsed[field] == value
     if "artificial-intelligence" in stem:
-        assert (
-            next(g for g in parsed["groups"] if g["id"] == "major-courses")["rule"]["type"]
-            == "UNKNOWN"
-        )
+        major = next(g for g in parsed["groups"] if g["id"] == "major-courses")
+        assert major["rule"]["type"] == "ALL"
+        assert "STATX100" in major["codes"]
+        assert major["units"] == 54
+
+
+def test_degree_mismatched_year_downgrades_source_verification():
+    stem = "degree-2026-artificial-intelligence-and-machine-learning"
+    source = json.loads((ROOT / f"{stem}.source.json").read_text())
+    source["year"] = 2027
+    parsed = parse_degree((ROOT / f"{stem}.html").read_text(), source)
+    assert parsed["year_status"] == "MISMATCH"
+    assert parsed["page_year"] == 2026
+    assert parsed["verification"] != "VERIFIED"
+
+
+def test_official_course_excerpts_preserve_level_and_requisite_logic():
+    def parsed(name, code):
+        stem = f"course-{name}-excerpt"
+        source = json.loads((ROOT / f"{stem}.source.json").read_text())
+        return parse_course((ROOT / f"{stem}.html").read_text(), source, code)
+
+    machine_learning = parsed("comp2052", "COMP2052")
+    assert machine_learning["level"] == 2
+    assert machine_learning["level_source"] == "OFFICIAL_FIELD"
+    assert [child["course"] for child in machine_learning["rules"]["prerequisite"]["children"]] == [
+        "COMP1002", "MATH1022", "STATX100"
+    ]
+    assert machine_learning["rules"]["antirequisite"]["course"] == "ARTI2001"
+    assert machine_learning["rules"]["prerequisite"]["raw"] == machine_learning["raw"]["prerequisite"]
+    ambiguous = parsed("comp3045", "COMP3045")
+    assert ambiguous["rules"]["prerequisite"]["type"] == "UNKNOWN"
+    assert ambiguous["rules"]["prerequisite"]["raw"] == ambiguous["raw"]["prerequisite"]
+    info = parsed("info1002-2027", "INFO1002")
+    assert info["level"] == 2  # Its numeric code starts with 1; the official field says 2.

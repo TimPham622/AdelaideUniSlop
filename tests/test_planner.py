@@ -1,5 +1,5 @@
 import pytest
-from slop.planner import solve, validate
+from slop.planner import can_take, requirement_fit, solve, validate
 from slop.rules import compile_rule
 from slop.schemas import Attempt, Credit, Plan
 
@@ -210,3 +210,44 @@ def test_generation_keeps_locked_and_current_state(small_catalogue):
     assert result["status"] == "VALID"
     original = next(a for a in result["attempts"] if a["course"] == "COMP1001")
     assert original["id"] == "COMP1001" and original["locked"] and original["status"] == "CURRENT"
+
+
+def test_can_take_is_period_specific_not_earliest_path(small_catalogue):
+    plan = Plan(year=2026)
+    assert can_take(plan, small_catalogue, "COMP1002", "2026-semester-1")["status"] == "BLOCKED"
+    assert can_take(plan, small_catalogue, "COMP1002", "2026-semester-2")["status"] == "BLOCKED"
+    completed = Plan(year=2026, attempts=[item("COMP1001", status="COMPLETED")])
+    assert can_take(completed, small_catalogue, "COMP1002", "2026-semester-2")["status"] == "TAKEABLE"
+    assert can_take(completed, small_catalogue, "COMP1002", "2028-semester-2")["status"] == "UNKNOWN"
+    waived = Plan(year=2026, credits=[Credit(id="w", kind="WAIVER", course="COMP1002")])
+    assert can_take(waived, small_catalogue, "COMP1002", "2026-semester-2")["status"] == "CONDITIONAL"
+
+
+def test_scheduled_version_controls_units_rules_and_load(small_catalogue):
+    later = next(c for c in small_catalogue["courses"]
+                 if c["year"] == 2027 and c["code"] == "COMP1002")
+    later["units"] = 12
+    later["level"] = 2
+    later["rules"]["prerequisite"] = compile_rule("COMP1003").model_dump()
+    plan = Plan(year=2026, attempts=[item("COMP1001", status="COMPLETED"),
+                                     item("COMP1002", "2027-semester-2")])
+    report = validate(plan, small_catalogue)
+    check = next(c for c in report["course_checks"] if c["course"] == "COMP1002")
+    assert check["status"] == "UNSATISFIED"
+    assert report["planned_units"] == 18
+    assert any(r["kind"] == "prerequisite" and r["evaluation"]["rule"]["course"] == "COMP1003"
+               for r in check["reasons"])
+    assert solve(Plan(year=2026, max_units=6), small_catalogue,
+                 target="COMP1002", start="2027-semester-1")["status"] != "VALID"
+
+
+def test_requirement_fit_uses_selected_pathway(small_catalogue):
+    degree = small_catalogue["degrees"][0]
+    degree["options"] = [{"id": "major", "groups": [
+        {"id": "major", "codes": ["COMP2001"], "rule": {"type": "COURSE", "course": "COMP2001"}},
+        degree["groups"][1],
+    ]}]
+    assert requirement_fit(small_catalogue, 2026, "bcomp", "general", "COMP2001") == "COUNTS_AS_ELECTIVE"
+    assert requirement_fit(small_catalogue, 2026, "bcomp", "major", "COMP2001") == "REQUIRED"
+    next(c for c in small_catalogue["courses"] if c["code"] == "COMP2002")["elective"] = False
+    assert requirement_fit(small_catalogue, 2026, "bcomp", "general", "COMP2002") == "OUTSIDE_KNOWN_RULES"

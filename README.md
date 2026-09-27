@@ -1,6 +1,6 @@
 # adelaide uni slop
 
-A React + TypeScript / FastAPI / PostgreSQL + pgvector degree planner for Adelaide University. Student plans stay in IndexedDB; server-side validation and generation are transient. No accounts, analytics, student database, or generative AI.
+A React + TypeScript / FastAPI / PostgreSQL + pgvector degree planner for Adelaide University. Student plans stay in IndexedDB; server-side validation and generation are transient. There are no accounts, analytics, or student database. Generative AI is optional in the broader design and disabled in this release.
 
 ![Planner](docs/screenshots/planner-desktop.png)
 
@@ -20,8 +20,8 @@ Use `docker compose down` to stop. Avoid `down -v` unless you intend to delete t
 - Load the official suggested sequence, add courses, drag cards, or use keyboard/touch period selectors. Track completed, current, planned, failed, withdrawn, and approved-credit attempts.
 - Keep separate local plans for each catalogue year. Export/import strict, versioned JSON; review before replacing a saved plan.
 - Evaluate typed rule trees using satisfied / unsatisfied / unknown states. Provisional credits and waivers remain conditional. Failed attempts grant no prerequisite credit; repeated attempts count units once.
-- Explain prerequisite failures; solve prerequisite branches and remaining plans using OR-Tools CP-SAT over actual published offerings. Respect locked courses, load limits, and assessment preferences. Independently validate generated candidates before allowing application.
-- Search course titles, overviews, learning outcomes and assessments using BGE small English v1.5 embeddings plus lexical retrieval. Show evidence and degree-fit labels; search does not require a generative model.
+- Explain prerequisite failures; check whether a course is takeable in a selected period; separately solve earliest prerequisite branches and remaining plans using OR-Tools CP-SAT over actual published offerings. Respect locked courses, load limits, and listed-exam preferences. Independently validate generated candidates before allowing application.
+- Search the currently ingested course corpus by title, overview, learning outcome and assessment using BGE small English v1.5 embeddings plus lexical retrieval. Show evidence, selected-pathway requirement fit, and indexed coverage; search does not require a generative model.
 - Route degree searches, course interests, prerequisite questions and planner questions without AI.
 - Re-ingest live Adelaide sources through a rate-limited, robots-aware, cached CLI. Runtime requests use the local catalogue, not upstream websites.
 
@@ -31,7 +31,8 @@ The software implements the first UI slice, **not all Phase A–H features**. Th
 
 - Many year-qualified course URLs return a page labelled a different year. The importer preserves the requested year and marks those versions unknown; it does not reuse their offerings as verified information for that year.
 - The source snapshot has no verified 2027 offerings and only a limited 2026 offering horizon. A complete three-year plan or many fastest paths cannot be certified from that data. The application returns an explanation instead of extrapolating recurring semesters.
-- The AI/ML major includes placeholder course codes (such as `STATX100` / `ARTIX300`), so its unresolved group remains unknown.
+- X-series codes such as `STATX100` and `ARTIX300` are official identifiers. `STATX100` is included in the AI/ML major’s 54-unit rule. Some course versions and future offerings remain unverified or year-mismatched, so this does not certify a complete study plan.
+- Search covers only courses discovered from the Bachelor of Computer Science degree pages and their referenced rules. The currently indexed corpus is shown in the UI and is not presented as university-wide coverage.
 - Some source requisite prose still requires reviewed overrides. A successful deterministic parse is distinct from verifying the entire degree.
 - Degree search is limited to the reference Bachelor of Computer Science. Career exploration, comparison, accounts, PWA/offline installation, web administration and generative AI are outside this increment.
 
@@ -70,9 +71,11 @@ uv run slop embed
 uv run slop quality
 ```
 
-The initial degree URL and linked major pages seed discovery. The importer recursively fetches referenced prerequisites and includes a small evidence-backed design/CAD elective sample. Requests are serial, at most one per second, with robots checks, conditional requests, retries, and `Retry-After`. It rejects arbitrary hosts and paths. Raw HTML lives only in ignored `.cache/adelaide`; sanitized academic fragments are committed for parser regression tests. Normalized data and provenance remain in Git and database revisions indefinitely.
+The initial degree URL and linked major pages seed discovery. The importer recursively fetches referenced prerequisites without query-specific course seeding. Requests are serial, at most one per second, with robots checks, conditional requests, retries, and `Retry-After`. It rejects arbitrary hosts and paths. Raw HTML lives only in ignored `.cache/adelaide`; sanitized academic fragments are committed for parser regression tests. Normalized data and provenance remain in Git and database revisions indefinitely.
 
-Maintain `compsci-adl/courses-api` separately. A raw JSON export can be normalized through `slop import-upstream input.json --output normalized-courses.json`. Merge reviewed normalized course records into the catalogue's `courses` collection, then load the snapshot. Missing raw requisites become unknown; code-only requirement lists cannot certify logic. No runtime requests call courses-api.
+Maintain [`compsci-adl/courses-api`](https://github.com/compsci-adl/courses-api) separately. The importer accepts JSON rows shaped like its raw `Course` ORM export, with `course_code`, raw requisite strings, `course_level`, and comma-separated `terms`; its reduced public detail response is insufficient for strict rule compilation. Normalize with `slop import-upstream input.json --output normalized-courses.json`, then review and merge course records into the catalogue before publication. Importing an upstream row alone leaves source verification unknown. Missing raw requisites become unknown; code-only requirement lists cannot certify logic. No runtime requests call courses-api.
+
+Migration `0001` is frozen as the original schema; `0002` introduces degree identity and removes the one-degree-per-year limit. Active publication replaces course versions for included catalogue years while preserving historical revision payloads.
 
 Publication is a Git workflow: inspect source changes and warnings, add reviewed overrides, run tests, and merge the normalized snapshot. A merged deployment loads that revision. Scheduled GitHub Actions produce a **review artifact**, not an automatically published catalogue. The default schedule is weekly; maintainers can run it manually or change the schedule during active development. Do not publish the raw HTML cache.
 

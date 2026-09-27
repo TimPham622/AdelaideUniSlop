@@ -15,8 +15,8 @@ from sqlalchemy import select, text
 from sqlalchemy.orm import Session
 
 from slop.db import DegreeVersion, catalogue, digest, engine
-from slop.planner import solve, validate
-from slop.schemas import PathRequest, Plan, SearchRequest
+from slop.planner import can_take, requirement_fit, solve, validate
+from slop.schemas import CanTakeRequest, PathRequest, Plan, SearchRequest
 from slop.search import route, search
 
 app = FastAPI(title="adelaide uni slop", version="0.1.0")
@@ -40,7 +40,8 @@ async def protection(request: Request, call_next):
         key = (
             request.client.host if request.client else "unknown",
             "expensive"
-            if request.url.path in {"/api/search", "/api/plan/generate", "/api/plan/path"}
+            if request.url.path in {"/api/search", "/api/plan/generate", "/api/plan/path",
+                                    "/api/plan/can-take"}
             else "regular",
         )
         limit = 30 if key[1] == "expensive" else 180
@@ -118,7 +119,15 @@ def get_catalogue(request: Request):
     with Session(engine) as session:
         data = catalogue(session)
     revision = digest(data)
-    return JSONResponse({**data, "revision": revision}, headers={"ETag": f'"{revision}"'})
+    return JSONResponse({**data, "revision": revision})
+
+
+@app.get("/api/requirement-fit")
+def get_requirement_fit(year: int, degree: str = "bcomp", option: str = "general"):
+    with Session(engine) as session:
+        data = catalogue(session)
+    return {c["code"]: requirement_fit(data, year, degree, option, c["code"])
+            for c in data["courses"] if c["year"] == year}
 
 
 @app.post("/api/plan/validate")
@@ -141,6 +150,13 @@ def prerequisite_path(request: PathRequest):
     return solve(request.plan, data, target=request.target, start=request.start)
 
 
+@app.post("/api/plan/can-take")
+def check_takeability(request: CanTakeRequest):
+    with Session(engine) as session:
+        data = catalogue(session)
+    return can_take(request.plan, data, request.target, request.period)
+
+
 @app.post("/api/search")
 def search_courses(request: SearchRequest):
     with Session(engine) as session:
@@ -151,6 +167,8 @@ def search_courses(request: SearchRequest):
             request.compatible_first,
             request.limit,
             session,
+            request.degree,
+            request.option,
         )
 
 
