@@ -1,0 +1,58 @@
+{
+  "title": "Problem Solving and Programming",
+  "raw": {
+    "prerequisite": "N/A",
+    "corequisite": "N/A",
+    "antirequisite": "N/A"
+  },
+  "rules": {
+    "prerequisite": {
+      "type": "ALL",
+      "children": [],
+      "course": null,
+      "units": null,
+      "codes": null,
+      "level": null,
+      "elective": false,
+      "min_selected": 1,
+      "raw": "N/A",
+      "warning": null
+    },
+    "corequisite": {
+      "type": "ALL",
+      "children": [],
+      "course": null,
+      "units": null,
+      "codes": null,
+      "level": null,
+      "elective": false,
+      "min_selected": 1,
+      "raw": "N/A",
+      "warning": null
+    },
+    "antirequisite": {
+      "type": "ALL",
+      "children": [],
+      "course": null,
+      "units": null,
+      "codes": null,
+      "level": null,
+      "elective": false,
+      "min_selected": 1,
+      "raw": "N/A",
+      "warning": null
+    }
+  },
+  "outcomes": [
+    "Translate a problem statement into a code solution using problem-solving techniques.",
+    "Identify and implement the most appropriate programming construct for a programming task.",
+    "Describe the behaviour and output of programs.",
+    "Debug algorithms and programs to correct defects.",
+    "Demonstrate industry programming standards for software development."
+  ],
+  "assessments": [
+    "Skills Demonstration \u2013 33%",
+    "Skills Demonstration \u2013 33%",
+    "Skills Demonstration \u2013 34%"
+  ]
+}

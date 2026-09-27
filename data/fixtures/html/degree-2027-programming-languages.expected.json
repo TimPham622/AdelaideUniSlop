@@ -1,0 +1,283 @@
+{
+  "summary_verified": true,
+  "total_units": 144,
+  "groups": [
+    {
+      "id": "core-courses",
+      "title": "Core Courses",
+      "raw": "Complete 66 units for ALL of the following:",
+      "units": 66,
+      "codes": [
+        "COMP1002",
+        "COMP1003",
+        "COMP1005",
+        "COMP1015",
+        "COMP2017",
+        "COMP2021",
+        "COMP1032",
+        "COMP1033",
+        "COMP1034",
+        "COMP2051",
+        "MATH1000"
+      ],
+      "rule": {
+        "type": "ALL",
+        "children": [
+          {
+            "type": "COURSE",
+            "course": "COMP1002"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1003"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1005"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1015"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2017"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2021"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1032"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1033"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP1034"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2051"
+          },
+          {
+            "type": "COURSE",
+            "course": "MATH1000"
+          }
+        ]
+      },
+      "verification": "VERIFIED"
+    },
+    {
+      "id": "major-courses",
+      "title": "Major Courses",
+      "raw": "Complete 54 units for ALL of the following:",
+      "units": 54,
+      "codes": [
+        "MATH1006",
+        "COMP2000",
+        "COMP2001",
+        "COMP2002",
+        "COMP2003",
+        "COMP2015",
+        "COMP2022",
+        "COMP3008",
+        "COMP3009"
+      ],
+      "rule": {
+        "type": "ALL",
+        "children": [
+          {
+            "type": "COURSE",
+            "course": "MATH1006"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2000"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2001"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2002"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2003"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2015"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP2022"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP3008"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP3009"
+          }
+        ]
+      },
+      "verification": "VERIFIED"
+    },
+    {
+      "id": "work-integrated-learning",
+      "title": "Work Integrated Learning",
+      "raw": "Complete 12 units for ALL of the following:",
+      "units": 12,
+      "codes": [
+        "COMP3903",
+        "COMP3904"
+      ],
+      "rule": {
+        "type": "ALL",
+        "children": [
+          {
+            "type": "COURSE",
+            "course": "COMP3903"
+          },
+          {
+            "type": "COURSE",
+            "course": "COMP3904"
+          }
+        ]
+      },
+      "verification": "VERIFIED"
+    },
+    {
+      "id": "electives",
+      "title": "Electives",
+      "raw": "Complete 12 units comprising: 12 units from University-wide electives",
+      "units": 12,
+      "codes": [],
+      "rule": {
+        "type": "EXACT_UNITS",
+        "units": 12,
+        "elective": true
+      },
+      "verification": "VERIFIED"
+    }
+  ],
+  "standard_plan": [
+    {
+      "course": "COMP1002",
+      "term": "2027-semester-1",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1003",
+      "term": "2027-semester-1",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1032",
+      "term": "2027-semester-1",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1015",
+      "term": "2027-semester-1",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1005",
+      "term": "2027-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1034",
+      "term": "2027-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP1033",
+      "term": "2027-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "MATH1000",
+      "term": "2027-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP2022",
+      "term": "2028-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "MATH1006",
+      "term": "2028-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP2000",
+      "term": "2028-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP2021",
+      "term": "2028-semester-1",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP2017",
+      "term": "2028-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP2001",
+      "term": "2028-semester-2",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP2002",
+      "term": "2028-semester-2",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP2051",
+      "term": "2028-semester-2",
+      "group": "core-courses"
+    },
+    {
+      "course": "COMP2003",
+      "term": "2029-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP2015",
+      "term": "2029-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP3008",
+      "term": "2029-semester-1",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP3009",
+      "term": "2029-semester-2",
+      "group": "majors-progbcomp-programming-languages-major-courses"
+    },
+    {
+      "course": "COMP3903",
+      "term": "2029-semester-2",
+      "group": "work-integrated-learning"
+    },
+    {
+      "course": "COMP3904",
+      "term": "2029-semester-2",
+      "group": "work-integrated-learning"
+    }
+  ]
+}

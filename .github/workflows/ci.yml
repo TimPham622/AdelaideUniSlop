@@ -1,0 +1,46 @@
+name: Verify application
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: slop
+          POSTGRES_PASSWORD: slop
+          POSTGRES_DB: slop
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U slop" --health-interval 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://slop:slop@localhost:5432/slop
+      TEST_DATABASE_URL: postgresql+psycopg://slop:slop@localhost:5432/slop
+      SEMANTIC_SEARCH: "0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.10.9"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: uv sync --frozen --extra dev --python 3.12
+      - run: uv run ruff check backend tests scripts
+      - run: uv run alembic upgrade head
+      - run: uv run slop load-fixtures
+      - run: uv run pytest -q
+      - run: npm ci --prefix apps/web
+      - run: npm run test --prefix apps/web
+      - run: npm run build --prefix apps/web
+      - run: npx playwright install --with-deps chromium firefox webkit
+        working-directory: apps/web
+      - run: npm run test:e2e --prefix apps/web
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: apps/web/test-results

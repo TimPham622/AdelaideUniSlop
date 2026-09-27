@@ -1,0 +1,25 @@
+name: Refresh public catalogue (review required)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * 0'
+concurrency:
+  group: adelaide-catalogue-ingestion
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.10.9"
+      - run: uv sync --frozen --python 3.12
+      - run: uv run slop ingest --years 2026 2027 --output refreshed/catalogue.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalogue-for-maintainer-review
+          path: refreshed/catalogue.json
+          retention-days: 14
